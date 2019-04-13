@@ -14,5 +14,49 @@ namespace Project1 {
 
             // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
         }
+
+        static void Inn(GameState gs) {
+
+
+        }
+        static void Letter(GameState gs) {
+
+        }
+        static void Armoury(GameState gs) {
+
+        }
+
+        static void Ambush(GameState gs) {
+
+        }
+
+        static void Sharnwick(GameState gs) {
+
+        }
+
+        static void Hideout(GameState gs) {
+
+        }
+
+        static void Captured(GameState gs) {
+
+        }
+
+        static void Win(GameState gs) {
+
+        }
+
+        static void Lose(GameState gs) {
+
+        }
+
+        static GameState NewGame() {
+            GameState gs = new GameState();
+            return gs;
+        }
+
+        public class GameState {
+
+        }
     }
 }
