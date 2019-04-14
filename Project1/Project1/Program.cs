@@ -50,13 +50,23 @@ namespace Project1 {
 
         }
 
+        static bool HasItem(GameState gs, string item) {
+            for (int i = 0; i < gs.inventory.Count(); i++) {
+                if (item == gs.inventory[i]) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         static GameState NewGame() {
             GameState gs = new GameState();
+            gs.inventory = new List<string>();
             return gs;
         }
 
         public class GameState {
-
+            public List<string> inventory;
         }
     }
 }
