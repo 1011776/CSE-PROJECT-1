@@ -7,12 +7,43 @@ using System.Threading.Tasks;
 namespace Project1 {
     class Program {
         static void Main(string[] args) {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
-
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            GameState gs = NewGame();
+            while (gs.current != "quit") {
+                switch (gs.current) {
+                    case "inn":
+                        Inn(gs);
+                        break;
+                    case "letter":
+                        Letter(gs);
+                        break;
+                    case "armoury":
+                        Armoury(gs);
+                        break;
+                    case "ambush":
+                        Ambush(gs);
+                        break;
+                    case "sharnwick":
+                        Sharnwick(gs);
+                        break;
+                    case "hideout":
+                        Hideout(gs);
+                        break;
+                    case "captured":
+                        Captured(gs);
+                        break;
+                    case "win":
+                        Win(gs);
+                        break;
+                    case "lose":
+                        Lose(gs);
+                        break;
+                    default:
+                        Console.WriteLine("An unexpected error has occured, the software will now quit");
+                        Console.ReadKey();
+                        gs.current = "quit";
+                        break;
+                }
+            }
         }
 
         static void Inn(GameState gs) {
@@ -61,11 +92,13 @@ namespace Project1 {
 
         static GameState NewGame() {
             GameState gs = new GameState();
+            gs.current = "quit";
             gs.inventory = new List<string>();
             return gs;
         }
 
         public class GameState {
+            public string current;
             public List<string> inventory;
         }
     }
