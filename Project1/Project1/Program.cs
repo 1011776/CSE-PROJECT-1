@@ -54,7 +54,49 @@ namespace Project1 {
 
         }
         static void Armoury(GameState gs) {
+            Console.WriteLine("What would you like to do next?");
+            Console.WriteLine("A - buy a sword for 10gp");
+            Console.WriteLine("B - buy a bow for 7gp");
+            Console.WriteLine("C - buy an arrow for 1gp");
+            Console.WriteLine("D - buy a lockpicking kit for 2gp");
+            Console.WriteLine("E - buy a pair of binoculars for 2gp");
+            Console.WriteLine("F - buy a bottle of the smith's 'rum' for 8gp");
+            Console.WriteLine("G - set out for sharnwick");
 
+            string input;
+            do {
+                input = Console.ReadLine().ToLower();
+                switch (input) {
+                    case "a":
+                        Console.WriteLine("You bought the sword");
+                        gs.inventory.Add("sword");
+                        break;
+                    case "b":
+                        Console.WriteLine("You bought the bow");
+                        gs.inventory.Add("bow");
+                        break;
+                    case "c":
+                        Console.WriteLine("You bought the arrow");
+                        gs.inventory.Add("arrow");
+                        break;
+                    case "d":
+                        Console.WriteLine("You bought the lockpicking kit");
+                        gs.inventory.Add("lockpicking kit");
+                        break;
+                    case "e":
+                        Console.WriteLine("You bought the binoculars");
+                        gs.inventory.Add("binoculars");
+                        break;
+                    case "f":
+                        Console.WriteLine("You bought the 'rum'");
+                        gs.inventory.Add("rum");
+                        break;
+                    case "g":
+                        Console.WriteLine("You set out to sharnwick");
+                        gs.current = "sharnwick";
+                        break;
+                }
+            } while (input.Count() == 1 && input[0] >= 'a' && input[0] <= 'g');
         }
 
         static void Ambush(GameState gs) {
