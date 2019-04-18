@@ -47,8 +47,13 @@ namespace Project1 {
         }
 
         static void Inn(GameState gs) {
-
-
+            Console.WriteLine("You hand your keys over to the innkeeper. You’ll need find somewhere else to stay. " +
+                "Just as you exit the door the innkeeper reminds you \"Your friend Baern left a message for you, " + 
+                "take this\", the innkeeper hands you a letter");
+            gs.inventory.Add("letter");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            gs.current = "Letter";
         }
         static void Letter(GameState gs) {
 
