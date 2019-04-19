@@ -145,7 +145,23 @@ namespace Project1 {
         }
 
         static void Win(GameState gs) {
-
+            Console.WriteLine("You have won the game");
+            string input;
+            do {
+                Console.WriteLine("What do you do next?");
+                Console.WriteLine("A - Try again");
+                Console.WriteLine("B - Quit");
+                input = Console.ReadLine().ToLower();
+            } while (input.Count() == 1 && input[0] >= 'a' && input[0] <= 'b');
+            switch(input) {
+                case "a":
+                    gs.current = "inn";
+                    gs = NewGame();
+                    break;
+                case "b":
+                    gs.current = "quit";
+                    break;
+            }
         }
 
         static void Lose(GameState gs) {
