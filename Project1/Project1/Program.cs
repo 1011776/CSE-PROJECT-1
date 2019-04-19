@@ -71,61 +71,62 @@ namespace Project1 {
             string input;
             do {
                 input = Console.ReadLine().ToLower();
-                switch (input) {
-                    case "a":
-                        if (gs.gp >= 10) {
-                            Console.WriteLine("You bought the sword");
-                            gs.inventory.Add("sword");
-                        } else {
-                            Console.WriteLine("You cannot afford that");
-                        }
-                        break;
-                    case "b":
-                        if (gs.gp >= 7) {
-                            Console.WriteLine("You bought the bow");
-                            gs.inventory.Add("bow");
-                        } else {
-                            Console.WriteLine("You cannot afford that");
-                        }
-                        break;
-                    case "c":
-                        if (gs.gp >= 1) {
-                            Console.WriteLine("You bought the arrow");
-                            gs.inventory.Add("arrow");
-                        } else {
-                            Console.WriteLine("You cannot afford that");
-                        }
-                        break;
-                    case "d":
-                        if (gs.gp >= 2) {
-                            Console.WriteLine("You bought the lockpicking kit");
-                            gs.inventory.Add("lockpicking kit");
-                        } else {
-                            Console.WriteLine("You cannot afford that");
-                        }
-                        break;
-                    case "e":
-                        if (gs.gp >= 2) {
-                            Console.WriteLine("You bought the binoculars");
-                            gs.inventory.Add("binoculars");
-                        } else {
-                            Console.WriteLine("You cannot afford that");
-                        }
-                        break;
-                    case "f":
-                        if (gs.gp >= 8) {
-                            Console.WriteLine("You bought the 'rum'");
-                            gs.inventory.Add("rum");
-                        } else {
-                            Console.WriteLine("You cannot afford that");
-                        }
-                        break;
-                    case "g":
-                        Console.WriteLine("You set out to sharnwick");
-                        gs.current = "sharnwick";
-                        break;
-                }
             } while (input.Count() == 1 && input[0] >= 'a' && input[0] <= 'g');
+
+            switch (input) {
+                case "a":
+                    if (gs.gp >= 10) {
+                        Console.WriteLine("You bought the sword");
+                        gs.inventory.Add("sword");
+                    } else {
+                        Console.WriteLine("You cannot afford that");
+                    }
+                    break;
+                case "b":
+                    if (gs.gp >= 7) {
+                        Console.WriteLine("You bought the bow");
+                        gs.inventory.Add("bow");
+                    } else {
+                        Console.WriteLine("You cannot afford that");
+                    }
+                    break;
+                case "c":
+                    if (gs.gp >= 1) {
+                        Console.WriteLine("You bought the arrow");
+                        gs.inventory.Add("arrow");
+                    } else {
+                        Console.WriteLine("You cannot afford that");
+                    }
+                    break;
+                case "d":
+                    if (gs.gp >= 2) {
+                        Console.WriteLine("You bought the lockpicking kit");
+                        gs.inventory.Add("lockpicking kit");
+                    } else {
+                        Console.WriteLine("You cannot afford that");
+                    }
+                    break;
+                case "e":
+                    if (gs.gp >= 2) {
+                        Console.WriteLine("You bought the binoculars");
+                        gs.inventory.Add("binoculars");
+                    } else {
+                        Console.WriteLine("You cannot afford that");
+                    }
+                    break;
+                case "f":
+                    if (gs.gp >= 8) {
+                        Console.WriteLine("You bought the 'rum'");
+                        gs.inventory.Add("rum");
+                    } else {
+                        Console.WriteLine("You cannot afford that");
+                    }
+                    break;
+                case "g":
+                    Console.WriteLine("You set out to sharnwick");
+                    gs.current = "sharnwick";
+                    break;
+            }
         }
 
         static void Ambush(GameState gs) {
