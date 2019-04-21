@@ -56,7 +56,13 @@ namespace Project1 {
             gs.current = "Letter";
         }
         static void Letter(GameState gs) {
-
+            const string NAME = "Bilbo";
+            Console.WriteLine("Opening the letter you read:\n Dear " + NAME + ",\n I'm writing this to let you know that" +
+                "I am on my way to the settlement of Sharnwick, and I think I've uncovered something big." +
+                "If you're looking for work I'd reccomend you come down as I'll need someone to help me with the project." +
+                "\nP.S. the trails to Sharnwick are notoriuos for being dangerous, so I suggest you get something from the armoury");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
         }
         static void Armoury(GameState gs) {
             Console.WriteLine("What would you like to do next?");
