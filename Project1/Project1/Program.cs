@@ -136,7 +136,10 @@ namespace Project1 {
         }
 
         static void Ambush(GameState gs) {
-
+            Console.WriteLine("You set off to sharnwick. After about half a day of travel, as you come around a bend, " +
+                "you spot a dead horse sprawled about fifty feet ahead of you is, blocking the path. It several " +
+                "black-feathered arrows sticking out of it. The woods press close to the trail here, with a steep embankment " +
+                "and dense thickets on either side.");
         }
 
         static void Sharnwick(GameState gs) {
