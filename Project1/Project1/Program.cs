@@ -65,22 +65,21 @@ namespace Project1 {
             Console.ReadKey();
         }
         static void Armoury(GameState gs) {
-            Console.WriteLine("What would you like to do next?");
-            Console.WriteLine("A - buy a sword for 10gp");
-            Console.WriteLine("B - buy a bow for 7gp");
-            Console.WriteLine("C - buy an arrow for 1gp");
-            Console.WriteLine("D - buy a lockpicking kit for 2gp");
-            Console.WriteLine("E - buy a pair of binoculars for 2gp");
-            Console.WriteLine("F - buy a bottle of the smith's 'rum' for 8gp");
-            Console.WriteLine("G - set out for sharnwick");
+            string message = "What do you do next?";
+            List<string> options = new List<string>() {
+                "buy a sword for 10gp",
+                "buy a bow for 7gp",
+                "buy an arrow for 1gp",
+                "buy a lockpicking kit for 2gp",
+                "buy a pair of binoculars for 2gp",
+                "buy a bottle of the smith's 'rum' for 8gp",
+                "set out for sharnwick"
+            };
 
-            string input;
-            do {
-                input = Console.ReadLine().ToLower();
-            } while (input.Count() == 1 && input[0] >= 'a' && input[0] <= 'g');
+            int input = presentOptions(options, message);
 
             switch (input) {
-                case "a":
+                case 0:
                     if (gs.gp >= 10) {
                         Console.WriteLine("You bought the sword");
                         gs.inventory.Add("sword");
@@ -88,7 +87,7 @@ namespace Project1 {
                         Console.WriteLine("You cannot afford that");
                     }
                     break;
-                case "b":
+                case 1:
                     if (gs.gp >= 7) {
                         Console.WriteLine("You bought the bow");
                         gs.inventory.Add("bow");
@@ -96,7 +95,7 @@ namespace Project1 {
                         Console.WriteLine("You cannot afford that");
                     }
                     break;
-                case "c":
+                case 2:
                     if (gs.gp >= 1) {
                         Console.WriteLine("You bought the arrow");
                         gs.inventory.Add("arrow");
@@ -104,7 +103,7 @@ namespace Project1 {
                         Console.WriteLine("You cannot afford that");
                     }
                     break;
-                case "d":
+                case 3:
                     if (gs.gp >= 2) {
                         Console.WriteLine("You bought the lockpicking kit");
                         gs.inventory.Add("lockpicking kit");
@@ -112,7 +111,7 @@ namespace Project1 {
                         Console.WriteLine("You cannot afford that");
                     }
                     break;
-                case "e":
+                case 4:
                     if (gs.gp >= 2) {
                         Console.WriteLine("You bought the binoculars");
                         gs.inventory.Add("binoculars");
@@ -120,7 +119,7 @@ namespace Project1 {
                         Console.WriteLine("You cannot afford that");
                     }
                     break;
-                case "f":
+                case 5:
                     if (gs.gp >= 8) {
                         Console.WriteLine("You bought the 'rum'");
                         gs.inventory.Add("rum");
@@ -128,7 +127,7 @@ namespace Project1 {
                         Console.WriteLine("You cannot afford that");
                     }
                     break;
-                case "g":
+                case 6:
                     Console.WriteLine("You set out to sharnwick");
                     gs.current = "sharnwick";
                     break;
@@ -140,6 +139,7 @@ namespace Project1 {
                 "you spot a dead horse sprawled about fifty feet ahead of you is, blocking the path. It several " +
                 "black-feathered arrows sticking out of it. The woods press close to the trail here, with a steep embankment " +
                 "and dense thickets on either side.");
+               
         }
 
         static void Sharnwick(GameState gs) {
