@@ -203,6 +203,11 @@ namespace Project1 {
             return false;
         }
 
+        static string presentOptions(List<string> options) {
+            // present options to user and read input from user
+            return options[0];
+        }
+
         static GameState NewGame() {
             GameState gs = new GameState();
             gs.current = "quit";
