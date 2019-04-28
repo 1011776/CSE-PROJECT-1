@@ -203,9 +203,17 @@ namespace Project1 {
             return false;
         }
 
-        static string presentOptions(List<string> options) {
-            // present options to user and read input from user
-            return options[0];
+        static int presentOptions(List<string> options, string message) {
+            string choice = " ";
+            do {
+                Console.WriteLine(message);
+                for (int i = 0; i < options.Count(); i++) {
+                    Console.WriteLine(('A' + i) + " - " + options[i]);
+                }
+                choice = Console.ReadLine().ToUpper();
+            } while (choice.Count() == 1 && choice[0] < 'A' && choice[0] > 'A' + options.Count());
+
+            return 'A' - choice[0];
         }
 
         static GameState NewGame() {
