@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Project1 {
     class Program {
@@ -160,7 +158,18 @@ namespace Project1 {
         }
 
         static void Sharnwick(GameState gs) {
-
+            Console.WriteLine("After another few hours in the distance you spot the small town of Sharnwick. Theres a inn, shops, " +
+                "a chapel, but no Baern. You think to yourself \" maybe he's still hasn't left Bardford\".");
+            string message = "What do you do next?";
+            List<string> options = new List<string>() {
+                "Head back to Bardford"
+            };
+            int input = presentOptions(options, message);
+            switch (input) {
+                case 0:
+                    gs.current = "ambush";
+                    break;
+            }
         }
 
         static void Hideout(GameState gs) {
