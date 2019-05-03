@@ -11,7 +11,7 @@ namespace Project1 {
             while (gs.current != "quit") {
                 switch (gs.current) {
                     case "menu":
-                        Menu();
+                        Menu(gs);
                         break;
                     case "inn":
                         Inn(gs);
