@@ -230,16 +230,15 @@ namespace Project1 {
         }
 
         static int presentOptions(List<string> options, string message) {
-            string choice = " ";
+            string choice = "";
             do {
                 Console.WriteLine(message);
                 for (int i = 0; i < options.Count(); i++) {
                     Console.WriteLine((char)('A' + i) + " - " + options[i]);
                 }
                 choice = Console.ReadLine().ToUpper();
-            } while (choice.Count() == 1 && choice[0] < 'A' && choice[0] > 'A' + options.Count());
-
-            return 'A' - choice[0];
+            } while (choice.Count() != 1 || choice[0] < 'A' || choice[0] >= 'A' + options.Count());
+            return choice[0] - 'A';
         }
 
         static GameState NewGame() {
