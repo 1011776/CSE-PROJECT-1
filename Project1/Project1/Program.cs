@@ -35,7 +35,7 @@ namespace Project1 {
                 "New Game",
                 "Load Game",
                 "About",
-                "Exit"
+                "Quit"
             };
             int input = presentOptions(options, message);
             switch (input) {
