@@ -82,7 +82,7 @@ namespace Project1 {
             gs.inventory.Add("letter");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
-            gs.current = "Letter";
+            gs.current = "letter";
         }
         static void Letter(GameState gs) {
             const string NAME = "Bilbo";
