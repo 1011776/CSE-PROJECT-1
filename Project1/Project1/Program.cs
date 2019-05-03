@@ -208,7 +208,7 @@ namespace Project1 {
             do {
                 Console.WriteLine(message);
                 for (int i = 0; i < options.Count(); i++) {
-                    Console.WriteLine(('A' + i) + " - " + options[i]);
+                    Console.WriteLine((char)('A' + i) + " - " + options[i]);
                 }
                 choice = Console.ReadLine().ToUpper();
             } while (choice.Count() == 1 && choice[0] < 'A' && choice[0] > 'A' + options.Count());
