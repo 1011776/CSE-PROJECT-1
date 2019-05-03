@@ -10,6 +10,9 @@ namespace Project1 {
             GameState gs = NewGame();
             while (gs.current != "quit") {
                 switch (gs.current) {
+                    case "menu":
+                        Menu();
+                        break;
                     case "inn":
                         Inn(gs);
                         break;
@@ -43,6 +46,32 @@ namespace Project1 {
                         gs.current = "quit";
                         break;
                 }
+            }
+        }
+
+        static void Menu(GameState gs) {
+            Console.WriteLine("The Smith's stash");
+            string message = "Choose an option.";
+            List<string> options = new List<string>() {
+                "New Game",
+                "Load Game",
+                "About",
+                "Exit"
+            };
+            int input = presentOptions(options, message);
+            switch (input) {
+                case 0:
+                    gs.current = "inn";
+                    break;
+                case 1:
+                    // Load Game
+                    break;
+                case 2:
+                    //About Menu
+                    break;
+                case 3:
+                    gs.current = "quit";
+                    break;
             }
         }
 
@@ -218,7 +247,7 @@ namespace Project1 {
 
         static GameState NewGame() {
             GameState gs = new GameState();
-            gs.current = "quit";
+            gs.current = "menu";
             gs.inventory = new List<string>();
             gs.gp = 0;
             return gs;
