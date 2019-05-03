@@ -11,6 +11,7 @@ namespace Project1 {
             while (gs.current != "quit") {
                 switch (gs.current) {
                     case "menu":        Menu(gs);       break;
+                    case "about":       About(gs);      break;
                     case "inn":         Inn(gs);        break;
                     case "letter":      Letter(gs);     break;
                     case "armoury":     Armoury(gs);    break;
@@ -53,6 +54,13 @@ namespace Project1 {
                     gs.current = "quit";
                     break;
             }
+        }
+
+        static void About(GameState gs) {
+            Console.WriteLine("About Menu");
+            Console.WriteLine("Press any key to return to menu");
+            Console.ReadKey();
+            gs.current = "menu";
         }
 
         static void Inn(GameState gs) {
