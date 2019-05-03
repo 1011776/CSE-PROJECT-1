@@ -10,36 +10,16 @@ namespace Project1 {
             GameState gs = NewGame();
             while (gs.current != "quit") {
                 switch (gs.current) {
-                    case "menu":
-                        Menu(gs);
-                        break;
-                    case "inn":
-                        Inn(gs);
-                        break;
-                    case "letter":
-                        Letter(gs);
-                        break;
-                    case "armoury":
-                        Armoury(gs);
-                        break;
-                    case "ambush":
-                        Ambush(gs);
-                        break;
-                    case "sharnwick":
-                        Sharnwick(gs);
-                        break;
-                    case "hideout":
-                        Hideout(gs);
-                        break;
-                    case "captured":
-                        Captured(gs);
-                        break;
-                    case "win":
-                        Win(gs);
-                        break;
-                    case "lose":
-                        Lose(gs);
-                        break;
+                    case "menu":        Menu(gs);       break;
+                    case "inn":         Inn(gs);        break;
+                    case "letter":      Letter(gs);     break;
+                    case "armoury":     Armoury(gs);    break;
+                    case "ambush":      Ambush(gs);     break;
+                    case "sharnwick":   Sharnwick(gs);  break;
+                    case "hideout":     Hideout(gs);    break;
+                    case "captured":    Captured(gs);   break;
+                    case "win":         Win(gs);        break;
+                    case "lose":        Lose(gs);       break;
                     default:
                         Console.WriteLine("An unexpected error has occured, the software will now quit");
                         Console.ReadKey();
