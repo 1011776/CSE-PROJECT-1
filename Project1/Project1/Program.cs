@@ -32,8 +32,7 @@ namespace Project1 {
             Console.WriteLine("The Smith's stash");
             string message = "Choose an option.";
             List<string> options = new List<string>() {
-                "New Game",
-                "Load Game",
+                "Play Game",
                 "About",
                 "Quit"
             };
@@ -43,12 +42,9 @@ namespace Project1 {
                     gs.current = "inn";
                     break;
                 case 1:
-                    // Load Game
+                    About(gs);
                     break;
                 case 2:
-                    //About Menu
-                    break;
-                case 3:
                     gs.current = "quit";
                     break;
             }
