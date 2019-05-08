@@ -260,7 +260,7 @@ namespace Project1 {
             GameState gs = new GameState();
             gs.current = "menu";
             gs.inventory = new List<string>();
-            gs.gp = 0;
+            gs.gp = 10;
             return gs;
         }
 
