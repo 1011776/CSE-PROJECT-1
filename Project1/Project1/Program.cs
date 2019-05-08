@@ -183,6 +183,7 @@ namespace Project1 {
                     gs.current = "ambush";
                     break;
             }
+            Console.ReadKey();
         }
 
         static void Hideout(GameState gs) {
