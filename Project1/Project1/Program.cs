@@ -104,9 +104,7 @@ namespace Project1 {
                 "set out for sharnwick"
             };
 
-            int input = presentOptions(options, message);
-
-            switch (input) {
+            switch (presentOptions(options, message)) {
                 case 0:
                     if (gs.gp >= 10) {
                         Console.WriteLine("You bought the sword");
@@ -167,6 +165,7 @@ namespace Project1 {
                 "you spot a dead horse sprawled about fifty feet ahead of you is, blocking the path. It several " +
                 "black-feathered arrows sticking out of it. The woods press close to the trail here, with a steep embankment " +
                 "and dense thickets on either side.");
+
             Console.ReadKey();
         }
 
