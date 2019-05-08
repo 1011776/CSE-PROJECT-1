@@ -68,12 +68,27 @@ namespace Project1 {
         }
         static void Letter(GameState gs) {
             const string NAME = "Bilbo";
-            Console.WriteLine("Opening the letter you read:\n Dear " + NAME + ",\n I'm writing this to let you know that" +
-                "I am on my way to the settlement of Sharnwick, and I think I've uncovered something big." +
-                "If you're looking for work I'd reccomend you come down as I'll need someone to help me with the project." +
-                "\nP.S. the trails to Sharnwick are notoriuos for being dangerous, so I suggest you get something from the armoury");
-            Console.WriteLine("Press any key to continue");
-            Console.ReadKey();
+            Console.WriteLine("Opening the letter you read:\n Dear " + NAME + ",\n I'm writing this to let you know that " +
+                "I am on my way to the settlement of Sharnwick, and I think I've uncovered something big. " +
+                "If you're looking for work I'd reccomend you come down as I'll need someone to help me with the project.\n" +
+                "P.S. the trails to Sharnwick are notoriuos for being dangerous, so I suggest you get something from the armoury");
+            string message = "What do you do next?";
+            List<string> options = new List<string>() {
+                "set out to sharnwick",
+                "visit the armory",
+                "revisit the inn"
+            };
+            switch (presentOptions(options, message)) {
+                case 0:
+                    gs.current = "ambush";
+                    break;
+                case 1:
+                    gs.current = "armory";
+                    break;
+                case 2:
+                    gs.current = "inn";
+                    break;
+            }
         }
         static void Armoury(GameState gs) {
             string message = "What do you do next?";
@@ -150,7 +165,7 @@ namespace Project1 {
                 "you spot a dead horse sprawled about fifty feet ahead of you is, blocking the path. It several " +
                 "black-feathered arrows sticking out of it. The woods press close to the trail here, with a steep embankment " +
                 "and dense thickets on either side.");
-               
+
         }
 
         static void Sharnwick(GameState gs) {
