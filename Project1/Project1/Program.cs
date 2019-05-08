@@ -85,7 +85,7 @@ namespace Project1 {
                     gs.current = "ambush";
                     break;
                 case 1:
-                    gs.current = "armory";
+                    gs.current = "armoury";
                     break;
                 case 2:
                     gs.current = "inn";
