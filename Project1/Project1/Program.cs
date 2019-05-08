@@ -79,9 +79,9 @@ namespace Project1 {
                 "P.S. the trails to Sharnwick are notoriuos for being dangerous, so I suggest you get something from the armoury");
             string message = "What do you do next?";
             List<string> options = new List<string>() {
-                "set out to sharnwick",
-                "visit the armory",
-                "revisit the inn"
+                "Set out to sharnwick",
+                "Visit the armory",
+                "Revisit the inn"
             };
             switch (presentOptions(options, message)) {
                 case 0:
@@ -98,13 +98,13 @@ namespace Project1 {
         static void Armoury(GameState gs) {
             string message = "What do you do next?";
             List<string> options = new List<string>() {
-                "buy a sword for 10gp",
-                "buy a bow for 7gp",
-                "buy an arrow for 1gp",
-                "buy a lockpicking kit for 2gp",
-                "buy a pair of binoculars for 2gp",
-                "buy a bottle of the smith's 'rum' for 8gp",
-                "set out for sharnwick"
+                "Buy a sword for 10gp",
+                "Buy a bow for 7gp",
+                "Buy an arrow for 1gp",
+                "Buy a lockpicking kit for 2gp",
+                "Buy a pair of binoculars for 2gp",
+                "Buy a bottle of the smith's 'rum' for 8gp",
+                "Set out for sharnwick"
             };
 
             switch (presentOptions(options, message)) {
