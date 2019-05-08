@@ -167,7 +167,7 @@ namespace Project1 {
                 "you spot a dead horse sprawled about fifty feet ahead of you is, blocking the path. It several " +
                 "black-feathered arrows sticking out of it. The woods press close to the trail here, with a steep embankment " +
                 "and dense thickets on either side.");
-
+            Console.ReadKey();
         }
 
         static void Sharnwick(GameState gs) {
