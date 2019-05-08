@@ -44,7 +44,7 @@ namespace Project1 {
                     gs.current = "inn";
                     break;
                 case 1:
-                    About(gs);
+                    gs.current = "about";
                     break;
                 case 2:
                     gs.current = "quit";
