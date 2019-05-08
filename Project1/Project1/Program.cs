@@ -54,6 +54,9 @@ namespace Project1 {
 
         static void About(GameState gs) {
             Console.WriteLine("About Menu");
+            Console.WriteLine("The Smith's Stash, written by Alistair Parkinson, is a text adventure as a part of a " +
+                "school project. This game is open-source, so feel free to use my code as per the MIT Licence. " +
+                "Currently this project is still in development so expect regular updates. I hope you enjoy my game.");
             Console.WriteLine("Press any key to return to menu");
             Console.ReadKey();
             gs.current = "menu";
