@@ -25,6 +25,8 @@ namespace Project1 {
                         gs.current = "quit";
                         break;
                 }
+                Console.WriteLine();
+                Console.WriteLine();
             }
         }
 
@@ -241,6 +243,7 @@ namespace Project1 {
         }
 
         static int presentOptions(List<string> options, string message) {
+            Console.WriteLine();
             string choice = "";
             do {
                 Console.WriteLine(message);
