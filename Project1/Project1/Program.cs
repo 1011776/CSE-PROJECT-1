@@ -96,6 +96,8 @@ namespace Project1 {
             }
         }
         static void Armoury(GameState gs) {
+            Console.WriteLine("The smith at the counter is a tall large bearded man. There are ");
+
             string message = "What do you do next?";
             List<string> options = new List<string>() {
                 "Buy a sword for 10gp",
@@ -199,6 +201,7 @@ namespace Project1 {
         static void Win(GameState gs) {
             Console.WriteLine("You have won the game");
             string input;
+
             do {
                 Console.WriteLine("What do you do next?");
                 Console.WriteLine("A - Try again");
@@ -218,19 +221,17 @@ namespace Project1 {
 
         static void Lose(GameState gs) {
             Console.WriteLine("You have lost the game");
-            string input;
-            do {
-                Console.WriteLine("What do you do next?");
-                Console.WriteLine("A - Try again");
-                Console.WriteLine("B - Quit");
-                input = Console.ReadLine().ToLower();
-            } while (input.Count() == 1 && input[0] >= 'a' && input[0] <= 'b');
-            switch (input) {
-                case "a":
+            string message = "What do you do next?";
+            List<string> options = new List<string>() {
+                "Try again",
+                "Quit"
+            };
+            switch (presentOptions(options, message)) {
+                case 0:
                     gs.current = "inn";
                     gs = NewGame();
                     break;
-                case "b":
+                case 1:
                     gs.current = "quit";
                     break;
             }
