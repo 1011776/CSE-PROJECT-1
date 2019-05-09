@@ -96,8 +96,6 @@ namespace Project1 {
             }
         }
         static void Armoury(GameState gs) {
-            Console.WriteLine("The smith at the counter is a tall large bearded man. There are ");
-
             string message = "What do you do next?";
             List<string> options = new List<string>() {
                 "Buy a sword for 10gp",
@@ -108,6 +106,12 @@ namespace Project1 {
                 "Buy a bottle of the smith's 'rum' for 8gp",
                 "Set out for sharnwick"
             };
+
+            if (gs.beenToArmoury == false) {
+                Console.WriteLine("The armoury is a small, old looking shop. The blacksmith is an old looking man" +
+                    "at the counter is an array of different items.");
+                gs.beenToArmoury = true;
+            }
 
             switch (presentOptions(options, message)) {
                 case 0:
@@ -264,6 +268,7 @@ namespace Project1 {
             gs.current = "menu";
             gs.inventory = new List<string>();
             gs.gp = 10;
+            gs.beenToArmoury = false;
             return gs;
         }
 
@@ -271,6 +276,7 @@ namespace Project1 {
             public string current;
             public List<string> inventory;
             public int gp;
+            public bool beenToArmoury;
         }
     }
 }
