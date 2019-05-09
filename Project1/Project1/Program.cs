@@ -123,13 +123,15 @@ namespace Project1 {
                 "Buy a bottle of the smith's 'rum' for 8gp",
                 "Set out for sharnwick"
             };
-
+            /*
+             * FIX THIS
+             * 
             if (gs.beenToArmoury == false) {
                 Console.WriteLine("The armoury is a small, old looking shop. The blacksmith is an old looking man" +
                     "at the counter is a vast array of different items.");
                 gs.beenToArmoury = true;
             }
-
+            */
             switch (PresentOptions(options, message)) {
                 case 0:
                     if (gs.gp >= 10) {
@@ -300,9 +302,9 @@ namespace Project1 {
         static GameState NewGame() {
             GameState gs = new GameState();
             gs.current = "menu";
+            gs.beenTo = new List<string>();
             gs.inventory = new List<string>();
             gs.gp = 10;
-            gs.beenToArmoury = false;
             return gs;
         }
 
@@ -311,7 +313,7 @@ namespace Project1 {
             public string current;
             public List<string> inventory;
             public int gp;
-            public bool beenToArmoury;
+            public List<string> beenTo;
         }
     }
 }
