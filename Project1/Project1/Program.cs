@@ -4,9 +4,14 @@ using System.Linq;
 
 namespace Project1 {
     class Program {
+
+        // NOTE
+        // Apart from the switch statement, main should remain the same regardless of new features added
+        // New features and areas should be added as functions and included in the switch statement
         static void Main(string[] args) {
             GameState gs = NewGame();
             while (gs.current != "quit") {
+                // gs.current contains a string thar corresponds to a function
                 switch (gs.current) {
                     case "menu":        Menu(gs);       break;
                     case "about":       About(gs);      break;
@@ -78,6 +83,8 @@ namespace Project1 {
             gs.current = "letter";
         }
 
+        // Accessible from "inn"
+        // Describes the main character opening the letter thay recieved from the inn
         static void Letter(GameState gs) {
             const string NAME = "Bilbo";
             Console.WriteLine("Opening the letter you read:\n Dear " + NAME + ",\n I'm writing this to let you know that " +
@@ -103,6 +110,8 @@ namespace Project1 {
             }
         }
 
+        // Accessible from "letter"
+        // The main character visits the armoury and can purchase adventuring gear for gold pieces
         static void Armoury(GameState gs) {
             string message = "What do you do next?";
             List<string> options = new List<string>() {
@@ -177,6 +186,8 @@ namespace Project1 {
             }
         }
 
+        // Accessible from "letter" and "inn"
+        // The main character stumbles across a dead horse on the way to Sharnwick, they are attacked by goblins
         static void Ambush(GameState gs) {
             Console.WriteLine("You set off to sharnwick. After about half a day of travel, as you come around a bend, " +
                 "you spot a dead horse sprawled about fifty feet ahead of you is, blocking the path. It several " +
@@ -186,6 +197,8 @@ namespace Project1 {
             Console.ReadKey();
         }
 
+        // Accessible from "ambush"
+        // Baern is nowhere to be found in sharnwick and must back to search for him
         static void Sharnwick(GameState gs) {
             Console.WriteLine("After another few hours in the distance you spot the small town of Sharnwick. Theres a inn, shops, " +
                 "a chapel, but no Baern. You think to yourself \" maybe he's still hasn't left Bardford\".");
@@ -202,14 +215,20 @@ namespace Project1 {
             Console.ReadKey();
         }
 
+        // Accessible from "ambush"
+        // The main character has snuck into the goblin's hideout
         static void Hideout(GameState gs) {
 
         }
 
+        // Accessible from "ambush"
+        // The main character is captured by the goblin ambushers
         static void Captured(GameState gs) {
 
         }
 
+        // Accessed when the player wins the game
+        // Lets player know that they have won the game, gives the player option to play again or quit
         static void Win(GameState gs) {
             Console.WriteLine("You have won the game");
             string input;
@@ -231,6 +250,8 @@ namespace Project1 {
             }
         }
 
+        // Accessed when the player loses the game
+        // Lets player know that they have lost the game, gives the player option to play again or quit
         static void Lose(GameState gs) {
             Console.WriteLine("You have lost the game");
             string message = "What do you do next?";
@@ -249,6 +270,7 @@ namespace Project1 {
             }
         }
 
+        // Returns whether the gs.inventory contains item
         static bool HasItem(GameState gs, string item) {
             for (int i = 0; i < gs.inventory.Count(); i++) {
                 if (item == gs.inventory[i]) {
@@ -258,6 +280,7 @@ namespace Project1 {
             return false;
         }
 
+        // Prints out options and prompts user to select one, message is printed with options presented
         static int presentOptions(List<string> options, string message) {
             Console.WriteLine();
             string choice = "";
@@ -271,6 +294,7 @@ namespace Project1 {
             return choice[0] - 'A';
         }
 
+        // Returns the GameSate for a default start from the beginning of the game
         static GameState NewGame() {
             GameState gs = new GameState();
             gs.current = "menu";
@@ -280,6 +304,7 @@ namespace Project1 {
             return gs;
         }
 
+        // Contains all information about the player and the environment
         public class GameState {
             public string current;
             public List<string> inventory;
