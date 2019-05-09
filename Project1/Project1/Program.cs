@@ -18,7 +18,7 @@ namespace Project1 {
                     case "inn":         Inn(gs);        break;
                     case "letter":      Letter(gs);     break;
                     case "armoury":     Armoury(gs);    break;
-                    case "dead horses":      DeadHorses(gs);     break;
+                    case "dead horses": DeadHorses(gs); break;
                     case "sharnwick":   Sharnwick(gs);  break;
                     case "hideout":     Hideout(gs);    break;
                     case "captured":    Captured(gs);   break;
@@ -194,10 +194,10 @@ namespace Project1 {
                 "black-feathered arrows sticking out of it. The woods press close to the trail here, with a steep embankment " +
                 "and dense thickets on either side.");
 
+            
+
             Console.ReadKey();
         }
-
-
 
         // Accessed from "dead horses"
         // Baern is nowhere to be found in sharnwick and must back to search for him
@@ -272,7 +272,7 @@ namespace Project1 {
             }
         }
 
-        // Returns whether the gs.inventory contains item
+        // Returns whether the gs.inventory contains item using linear search algorithm
         static bool HasItem(GameState gs, string item) {
             for (int i = 0; i < gs.inventory.Count(); i++) {
                 if (item == gs.inventory[i]) {
