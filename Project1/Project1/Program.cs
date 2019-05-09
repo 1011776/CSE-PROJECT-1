@@ -32,7 +32,6 @@ namespace Project1 {
                 }
                 UpdateBeenTo(gs);
                 Console.WriteLine();
-                Console.WriteLine();
             }
         }
 
