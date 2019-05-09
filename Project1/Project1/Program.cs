@@ -30,6 +30,7 @@ namespace Project1 {
                         gs.current = "quit";
                         break;
                 }
+                UpdateBeenTo(gs);
                 Console.WriteLine();
                 Console.WriteLine();
             }
@@ -284,6 +285,10 @@ namespace Project1 {
             return false;
         }
 
+        static void UpdateBeenTo (GameState gs) {
+            gs.beenTo.Add(gs.current);
+        }
+
         // Prints out options and prompts user to select one, message is printed with options presented
         static int PresentOptions(List<string> options, string message) {
             Console.WriteLine();
@@ -302,7 +307,7 @@ namespace Project1 {
         static GameState NewGame() {
             GameState gs = new GameState();
             gs.current = "menu";
-            gs.beenTo = new List<string>();
+            gs.beenTo = new List<string>() { "menu" };
             gs.inventory = new List<string>();
             gs.gp = 10;
             return gs;
