@@ -123,15 +123,12 @@ namespace Project1 {
                 "Buy a bottle of the smith's 'rum' for 8gp",
                 "Set out for sharnwick"
             };
-            /*
-             * FIX THIS
-             * 
-            if (gs.beenToArmoury == false) {
+
+            if (HasBeenTo(gs, "armoury") == false) {
                 Console.WriteLine("The armoury is a small, old looking shop. The blacksmith is an old looking man" +
                     "at the counter is a vast array of different items.");
-                gs.beenToArmoury = true;
             }
-            */
+
             switch (PresentOptions(options, message)) {
                 case 0:
                     if (gs.gp >= 10) {
@@ -284,10 +281,10 @@ namespace Project1 {
             return false;
         }
 
-        // Returns whether the gs.beenTo contains string using linear search algorithm
-        static bool HasBeenTo(GameState gs, string item) {
+        // Returns whether the gs.beenTo contains section using linear search algorithm
+        static bool HasBeenTo(GameState gs, string section) {
             for (int i = 0; i < gs.beenTo.Count(); i++) {
-                if (item == gs.beenTo[i]) {
+                if (section == gs.beenTo[i]) {
                     return true;
                 }
             }
