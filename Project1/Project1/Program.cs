@@ -30,6 +30,8 @@ namespace Project1 {
             }
         }
 
+        // First function that runs when application is ran 
+        // Prints title screen shows user with options to start a new game and view about screen
         static void Menu(GameState gs) {
             Console.WriteLine("The Smith's stash");
             string message = "Choose an option.";
@@ -52,6 +54,8 @@ namespace Project1 {
             }
         }
 
+        // Accessible from "menu"
+        // Gives brief summary of what game is about
         static void About(GameState gs) {
             Console.WriteLine("About Menu");
             Console.WriteLine("The Smith's Stash, written by Alistair Parkinson, is a text adventure as a part of a " +
@@ -62,6 +66,8 @@ namespace Project1 {
             gs.current = "menu";
         }
 
+        // Accessible from "win", "lose" and "menu"
+        // Describes main character being kicked out of an inn and recieving a letter
         static void Inn(GameState gs) {
             Console.WriteLine("You hand your keys over to the innkeeper. You’ll need find somewhere else to stay. " +
                 "Just as you exit the door the innkeeper reminds you \"Your friend Baern left a message for you, " + 
@@ -71,6 +77,7 @@ namespace Project1 {
             Console.ReadKey();
             gs.current = "letter";
         }
+
         static void Letter(GameState gs) {
             const string NAME = "Bilbo";
             Console.WriteLine("Opening the letter you read:\n Dear " + NAME + ",\n I'm writing this to let you know that " +
@@ -95,6 +102,7 @@ namespace Project1 {
                     break;
             }
         }
+
         static void Armoury(GameState gs) {
             string message = "What do you do next?";
             List<string> options = new List<string>() {
@@ -109,7 +117,7 @@ namespace Project1 {
 
             if (gs.beenToArmoury == false) {
                 Console.WriteLine("The armoury is a small, old looking shop. The blacksmith is an old looking man" +
-                    "at the counter is an array of different items.");
+                    "at the counter is a vast array of different items.");
                 gs.beenToArmoury = true;
             }
 
