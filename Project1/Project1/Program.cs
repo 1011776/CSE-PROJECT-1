@@ -59,7 +59,7 @@ namespace Project1 {
             }
         }
 
-        // Accessible from "menu"
+        // Accessed from "menu"
         // Gives brief summary of what game is about
         static void About(GameState gs) {
             Console.WriteLine("About Menu");
@@ -71,7 +71,7 @@ namespace Project1 {
             gs.current = "menu";
         }
 
-        // Accessible from "win", "lose" and "menu"
+        // Accessed from "win", "lose" and "menu"
         // Describes main character being kicked out of an inn and recieving a letter
         static void Inn(GameState gs) {
             Console.WriteLine("You hand your keys over to the innkeeper. You’ll need find somewhere else to stay. " +
@@ -83,7 +83,7 @@ namespace Project1 {
             gs.current = "letter";
         }
 
-        // Accessible from "inn"
+        // Accessed from "inn"
         // Describes the main character opening the letter thay recieved from the inn
         static void Letter(GameState gs) {
             const string NAME = "Bilbo";
@@ -110,7 +110,7 @@ namespace Project1 {
             }
         }
 
-        // Accessible from "letter"
+        // Accessed from "letter"
         // The main character visits the armoury and can purchase adventuring gear for gold pieces
         static void Armoury(GameState gs) {
             string message = "What do you do next?";
@@ -186,7 +186,7 @@ namespace Project1 {
             }
         }
 
-        // Accessible from "letter" and "inn"
+        // Accessed from "letter" and "inn"
         // The main character stumbles across a dead horse on the way to Sharnwick, they are attacked by goblins
         static void Ambush(GameState gs) {
             Console.WriteLine("You set off to sharnwick. After about half a day of travel, as you come around a bend, " +
@@ -197,7 +197,7 @@ namespace Project1 {
             Console.ReadKey();
         }
 
-        // Accessible from "ambush"
+        // Accessed from "ambush"
         // Baern is nowhere to be found in sharnwick and must back to search for him
         static void Sharnwick(GameState gs) {
             Console.WriteLine("After another few hours in the distance you spot the small town of Sharnwick. Theres a inn, shops, " +
@@ -215,13 +215,13 @@ namespace Project1 {
             Console.ReadKey();
         }
 
-        // Accessible from "ambush"
+        // Accessed from "ambush"
         // The main character has snuck into the goblin's hideout
         static void Hideout(GameState gs) {
 
         }
 
-        // Accessible from "ambush"
+        // Accessed from "ambush"
         // The main character is captured by the goblin ambushers
         static void Captured(GameState gs) {
 
