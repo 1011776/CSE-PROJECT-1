@@ -18,7 +18,7 @@ namespace Project1 {
                     case "inn":         Inn(gs);        break;
                     case "letter":      Letter(gs);     break;
                     case "armoury":     Armoury(gs);    break;
-                    case "ambush":      Ambush(gs);     break;
+                    case "dead horses":      DeadHorses(gs);     break;
                     case "sharnwick":   Sharnwick(gs);  break;
                     case "hideout":     Hideout(gs);    break;
                     case "captured":    Captured(gs);   break;
@@ -188,7 +188,7 @@ namespace Project1 {
 
         // Accessed from "letter" and "inn"
         // The main character stumbles across a dead horse on the way to Sharnwick, they are attacked by goblins
-        static void Ambush(GameState gs) {
+        static void DeadHorses(GameState gs) {
             Console.WriteLine("You set off to sharnwick. After about half a day of travel, as you come around a bend, " +
                 "you spot a dead horse sprawled about fifty feet ahead of you is, blocking the path. It several " +
                 "black-feathered arrows sticking out of it. The woods press close to the trail here, with a steep embankment " +
@@ -197,7 +197,9 @@ namespace Project1 {
             Console.ReadKey();
         }
 
-        // Accessed from "ambush"
+
+
+        // Accessed from "dead horses"
         // Baern is nowhere to be found in sharnwick and must back to search for him
         static void Sharnwick(GameState gs) {
             Console.WriteLine("After another few hours in the distance you spot the small town of Sharnwick. Theres a inn, shops, " +
@@ -215,13 +217,13 @@ namespace Project1 {
             Console.ReadKey();
         }
 
-        // Accessed from "ambush"
+        // Accessed from "dead horses"
         // The main character has snuck into the goblin's hideout
         static void Hideout(GameState gs) {
 
         }
 
-        // Accessed from "ambush"
+        // Accessed from "desd horses"
         // The main character is captured by the goblin ambushers
         static void Captured(GameState gs) {
 
