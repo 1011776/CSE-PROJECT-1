@@ -45,7 +45,7 @@ namespace Project1 {
                 "About",
                 "Quit"
             };
-            int input = presentOptions(options, message);
+            int input = PresentOptions(options, message);
             switch (input) {
                 case 0:
                     gs.current = "inn";
@@ -97,7 +97,7 @@ namespace Project1 {
                 "Visit the armory",
                 "Revisit the inn"
             };
-            switch (presentOptions(options, message)) {
+            switch (PresentOptions(options, message)) {
                 case 0:
                     gs.current = "ambush";
                     break;
@@ -130,7 +130,7 @@ namespace Project1 {
                 gs.beenToArmoury = true;
             }
 
-            switch (presentOptions(options, message)) {
+            switch (PresentOptions(options, message)) {
                 case 0:
                     if (gs.gp >= 10) {
                         Console.WriteLine("You bought the sword");
@@ -206,7 +206,7 @@ namespace Project1 {
             List<string> options = new List<string>() {
                 "Head back to Bardford"
             };
-            int input = presentOptions(options, message);
+            int input = PresentOptions(options, message);
             switch (input) {
                 case 0:
                     gs.current = "ambush";
@@ -259,7 +259,7 @@ namespace Project1 {
                 "Try again",
                 "Quit"
             };
-            switch (presentOptions(options, message)) {
+            switch (PresentOptions(options, message)) {
                 case 0:
                     gs.current = "inn";
                     gs = NewGame();
@@ -281,7 +281,7 @@ namespace Project1 {
         }
 
         // Prints out options and prompts user to select one, message is printed with options presented
-        static int presentOptions(List<string> options, string message) {
+        static int PresentOptions(List<string> options, string message) {
             Console.WriteLine();
             string choice = "";
             do {
