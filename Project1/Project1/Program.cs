@@ -284,6 +284,16 @@ namespace Project1 {
             return false;
         }
 
+        // Returns whether the gs.beenTo contains string using linear search algorithm
+        static bool HasBeenTo(GameState gs, string item) {
+            for (int i = 0; i < gs.beenTo.Count(); i++) {
+                if (item == gs.beenTo[i]) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         static void UpdateBeenTo (GameState gs) {
             gs.beenTo.Add(gs.current);
         }
