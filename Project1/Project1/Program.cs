@@ -166,8 +166,16 @@ namespace Project1 {
                 "you spot a dead horse sprawled about fifty feet ahead of you is, blocking the path. It several " +
                 "black-feathered arrows sticking out of it. The woods press close to the trail here, with a steep embankment " +
                 "and dense thickets on either side.");
-
-            
+            List<string> options = new List<string>() {
+                "Ignore it and continue to sharnwick",
+                "Inspect the corpses of the dead horses"
+            };
+            if (HasItem(gs, "binoculars")) {
+                options.Add("Use your binoculars to inspect your surroundings");
+            }
+            if (HasItem(gs, "rum")) {
+                options.Add("Take a sip of the the smith's 'rum'");
+            }
 
             Console.ReadKey();
         }
