@@ -126,8 +126,11 @@ namespace Project1 {
 
             if (HasBeenTo(gs, "armoury") == false) {
                 Console.WriteLine("The armoury is a small, old looking shop. The blacksmith is an old looking man" +
-                    "at the counter is a vast array of different items.");
+                    "at the counter is a vast array of different items. You reach into your pocket and pull out " +
+                    "the rest of the money you have left.");
             }
+
+            Console.WriteLine("You currently have ", gs.gp, " gp");
 
             switch (PresentOptions(options, message)) {
                 case 0:
