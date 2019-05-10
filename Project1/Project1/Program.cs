@@ -137,6 +137,7 @@ namespace Project1 {
                     if (gs.gp >= 10) {
                         Console.WriteLine("You bought the sword");
                         gs.inventory.Add("sword");
+                        gs.gp -= 10;
                     } else {
                         Console.WriteLine("You cannot afford that");
                     }
@@ -145,6 +146,7 @@ namespace Project1 {
                     if (gs.gp >= 7) {
                         Console.WriteLine("You bought the bow");
                         gs.inventory.Add("bow");
+                        gs.gp -= 7;
                     } else {
                         Console.WriteLine("You cannot afford that");
                     }
@@ -153,6 +155,7 @@ namespace Project1 {
                     if (gs.gp >= 1) {
                         Console.WriteLine("You bought the arrow");
                         gs.inventory.Add("arrow");
+                        gs.gp -= 1;
                     } else {
                         Console.WriteLine("You cannot afford that");
                     }
@@ -161,6 +164,7 @@ namespace Project1 {
                     if (gs.gp >= 2) {
                         Console.WriteLine("You bought the lockpicking kit");
                         gs.inventory.Add("lockpicking kit");
+                        gs.gp -= 2;
                     } else {
                         Console.WriteLine("You cannot afford that");
                     }
@@ -169,6 +173,7 @@ namespace Project1 {
                     if (gs.gp >= 2) {
                         Console.WriteLine("You bought the binoculars");
                         gs.inventory.Add("binoculars");
+                        gs.gp -= 2;
                     } else {
                         Console.WriteLine("You cannot afford that");
                     }
@@ -177,6 +182,7 @@ namespace Project1 {
                     if (gs.gp >= 8) {
                         Console.WriteLine("You bought the 'rum'");
                         gs.inventory.Add("rum");
+                        gs.gp -= 8;
                     } else {
                         Console.WriteLine("You cannot afford that");
                     }
