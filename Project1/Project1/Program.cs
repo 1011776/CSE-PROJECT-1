@@ -25,7 +25,9 @@ namespace Project1 {
                     case "win":         Win(gs);        break;
                     case "lose":        Lose(gs);       break;
                     default:
-                        Console.WriteLine("An unexpected error has occured, the software will now quit");
+                        Console.WriteLine("An unexpected error has occured");
+                        Console.WriteLine("Details: gs.current is an unexpected value");
+                        Console.WriteLine("Press any key to quit program");
                         Console.ReadKey();
                         gs.current = "quit";
                         break;
