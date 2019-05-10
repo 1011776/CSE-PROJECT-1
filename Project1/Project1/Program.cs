@@ -306,10 +306,21 @@ namespace Project1 {
 
         // Contains all information about the player and the environment
         public class GameState {
+            // Contains string that corresponds to function that needs to be called from main next
             public string current;
+
+            // Contains list of items that the player is holding
             public List<string> inventory;
+
+            // Gold pieces (or gp for short) is the currency of the world in which the game is based
+            // Contains integer that corresponds to how many gold pieces the player is carrying
             public int gp;
+
+            // Contains list of every value current has been, except for its current value
+            // Only written to by UpdateBeenTo and only read by HasBeenTo 
             public List<string> beenTo;
+
+            // Only read and written to by UpdateBeenTo
             public string last;
         }
     }
