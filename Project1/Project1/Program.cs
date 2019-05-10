@@ -304,6 +304,16 @@ namespace Project1 {
             gs.beenTo.Add(gs.current);
         }
 
+        static void Buy (GameState gs, string item, int cost) {
+            if (gs.gp >= cost) {
+                Console.WriteLine("You bought the " + item);
+                gs.inventory.Add(item);
+                gs.gp -= cost;
+            } else {
+                Console.WriteLine("You cannot afford that");
+            }
+        }
+
         // Prints out options and prompts user to select one, message is printed with options presented
         static int PresentOptions(List<string> options, string message) {
             Console.WriteLine();
