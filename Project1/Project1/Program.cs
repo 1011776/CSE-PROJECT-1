@@ -99,7 +99,7 @@ namespace Project1 {
             };
             switch (PresentOptions(options, message)) {
                 case 0:
-                    gs.current = "ambush";
+                    gs.current = "dead horses";
                     break;
                 case 1:
                     gs.current = "armoury";
@@ -183,7 +183,7 @@ namespace Project1 {
             int input = PresentOptions(options, message);
             switch (input) {
                 case 0:
-                    gs.current = "ambush";
+                    gs.current = "dead horses";
                     break;
             }
             Console.ReadKey();
