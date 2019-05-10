@@ -267,7 +267,9 @@ namespace Project1 {
 
         // Adds the last value of current to beenTo and ensuring that there are no duplicates
         static void UpdateBeenTo (GameState gs) {
-            gs.beenTo.Add(gs.last);
+            if (HasBeenTo(gs, gs.last) == false) {
+                gs.beenTo.Add(gs.last);
+            }
             gs.last = gs.current;
         }
 
