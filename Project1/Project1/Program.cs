@@ -265,11 +265,15 @@ namespace Project1 {
             return false;
         }
 
+        // Adds the last value of current to beenTo and ensuring that there are no duplicates
         static void UpdateBeenTo (GameState gs) {
             gs.beenTo.Add(gs.last);
             gs.last = gs.current;
         }
 
+        // Accessed from "armoury"
+        // Prints appropriate message when player tries to buy an item and adds the item to the player's
+        // inventory if they have enough gold pieces
         static void Buy (GameState gs, string item, int cost) {
             if (gs.gp >= cost) {
                 Console.WriteLine("You bought the " + item);
