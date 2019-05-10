@@ -126,12 +126,12 @@ namespace Project1 {
             };
 
             if (HasBeenTo(gs, "armoury") == false) {
-                Console.WriteLine("The armoury is a small, old looking shop. The blacksmith is an old looking man" +
-                    "at the counter is a vast array of different items. You reach into your pocket and pull out " +
+                Console.WriteLine("The armoury is a small, old looking shop. The blacksmith is an old looking man " +
+                    "and at the counter is a vast array of different items. You reach into your pocket and pull out " +
                     "the rest of the money you have left.");
             }
 
-            Console.WriteLine("You currently have ", gs.gp, " gp");
+            Console.WriteLine("You currently have " + gs.gp + " gp");
 
             switch (PresentOptions(options, message)) {
                 case 0:
@@ -266,7 +266,8 @@ namespace Project1 {
         }
 
         static void UpdateBeenTo (GameState gs) {
-            gs.beenTo.Add(gs.current);
+            gs.beenTo.Add(gs.last);
+            gs.last = gs.current;
         }
 
         static void Buy (GameState gs, string item, int cost) {
@@ -297,7 +298,7 @@ namespace Project1 {
         static GameState NewGame() {
             GameState gs = new GameState();
             gs.current = "menu";
-            gs.beenTo = new List<string>() { "menu" };
+            gs.beenTo = new List<string>();
             gs.inventory = new List<string>();
             gs.gp = 10;
             return gs;
@@ -309,6 +310,7 @@ namespace Project1 {
             public List<string> inventory;
             public int gp;
             public List<string> beenTo;
+            public string last;
         }
     }
 }
