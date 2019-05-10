@@ -19,6 +19,7 @@ namespace Project1 {
                     case "letter":      Letter(gs);     break;
                     case "armoury":     Armoury(gs);    break;
                     case "dead horses": DeadHorses(gs); break;
+                    case "inspect":     Inspect(gs);    break;
                     case "sharnwick":   Sharnwick(gs);  break;
                     case "hideout":     Hideout(gs);    break;
                     case "captured":    Captured(gs);   break;
@@ -180,6 +181,13 @@ namespace Project1 {
             }
 
             Console.ReadKey();
+        }
+
+        static void Inspect(GameState gs) {
+            Console.WriteLine("You approach the corpse of the dead horse and kneel beside it. On closer " +
+                "inspection you deduct that it must have been killed sometime within the past 24 hours. " +
+                "You look inside the saddlebags, they have looted, closing the pocket you notice the " +
+                "name, 'Baern', engraved the side of the emptied pouch.");
         }
 
         // Accessed from "dead horses"
