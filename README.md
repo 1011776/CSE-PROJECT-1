@@ -1,3 +1,3 @@
-# CSE-PROJECT-1-DEV
+# CSE-PROJECT-1
 
-This repository is the development repository for the role playing game The Smith's Stash. As this is development repository, likely there will be bugs and code may not compile or run. Working beta releases can be found on the stable repository at https://github.com/1011776/CSE-PROJECT-1-STABLE. I have chosen to make my project open source, and I encourage you to use my code in your own projects as per the MIT Licence included. 
+This repository is the development repository for the role playing game The Smith's Stash. As I am using this repository as I develop the project, likely there will be bugs and code may not compile or run. I have used tags to label the working versions of the code, these will be the least buggy. I highly reccomend that you test my code and provide your feedback via this Google Form __LINK_COMING_SOON__, as it will help guide the development of my project. Finally, I have chosen to make my project open source, so I encourage you to use my code in your own projects as per the MIT Licence included.
