@@ -13,22 +13,20 @@ namespace Project1 {
             while (gs.current != "quit") {
                 // gs.current contains a string thar corresponds to a function
                 switch (gs.current) {
-                    case "menu":        Menu(gs);       break;
-                    case "about":       About(gs);      break;
-                    case "inn":         Inn(gs);        break;
-                    case "letter":      Letter(gs);     break;
-                    case "armoury":     Armoury(gs);    break;
+                    case "menu": Menu(gs); break;
+                    case "about": About(gs); break;
+                    case "inn": Inn(gs); break;
+                    case "chadford": Chadford(gs); break;
+                    case "letter": Letter(gs); break;
+                    case "armoury": Armoury(gs); break;
                     case "dead horses": DeadHorses(gs); break;
-                    case "inspect":     Inspect(gs);    break;
-                    case "sharnwick":   Sharnwick(gs);  break;
-                    case "hideout":     Hideout(gs);    break;
-                    case "captured":    Captured(gs);   break;
-                    case "win":         Win(gs);        break;
-                    case "lose":        Lose(gs);       break;
+                    case "sharnwick": Sharnwick(gs); break;
+                    case "hideout": Hideout(gs); break;
+                    case "captured": Captured(gs); break;
+                    case "win": Win(gs); break;
+                    case "lose": Lose(gs); break;
                     default:
-                        Console.WriteLine("An unexpected error has occured");
-                        Console.WriteLine("Details: gs.current is an unexpected value");
-                        Console.WriteLine("Press any key to quit program");
+                        Console.WriteLine("An unexpected error has occured, the software will now quit");
                         Console.ReadKey();
                         gs.current = "quit";
                         break;
@@ -41,8 +39,7 @@ namespace Project1 {
         // First function that runs when application is ran 
         // Prints title screen shows user with options to start a new game and view about screen
         static void Menu(GameState gs) {
-            Console.WriteLine("The Smith's Stash");
-            Console.WriteLine("By Alistair Parkinson");
+            Console.WriteLine("The Smith's stash");
             string message = "Choose an option.";
             List<string> options = new List<string>() {
                 "Play Game",
@@ -78,13 +75,26 @@ namespace Project1 {
         // Accessed from "win", "lose" and "menu"
         // Describes main character being kicked out of an inn and recieving a letter
         static void Inn(GameState gs) {
-            Console.WriteLine("You hand your keys over to the innkeeper. You’ll need find somewhere else to stay. " +
-                "Just as you exit the door the innkeeper reminds you \"Your friend Baern left a message for you, " + 
-                "take this\", the innkeeper hands you a letter");
-            gs.inventory.Add("letter");
+            if (HasBeenTo(gs, "inn") == false) {
+                Console.WriteLine("You re-enter the inn. The innkeeper is looking at you confused. I thought you were broke?");
+                if (gs.gp == 0) {
+                    Console.WriteLine("You reach into your pockets to see if still have any gold pieces, your pockets are empty?" +
+                        "'Sorry, dont have anything' you say, as you leave the inn.");
+                } else {
+                    Console.WriteLine("Reaching into your pocket you pull out the few gold pieces you have left. You pull out " +
+                        gs.gp + "and hand it to the innkeeper. The inkeeper gives you another look and hands you your pieces back." +
+                        "'Thats not even close to enough' he says. You decide to leave the inn, perhaps you'll come back when you've" +
+                        "earned enough.");
+                }
+            } else {
+                Console.WriteLine("You hand your keys over to the innkeeper. You’ll need find somewhere else to stay. " +
+                    "Just as you exit the door the innkeeper reminds you \"Your friend Baern left a message for you, " +
+                    "take this\", the innkeeper hands you a letter");
+            }
+            gs.inventory.Add("chadford");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
-            gs.current = "letter";
+            gs.current = "chadford";
         }
 
         // Accessed from "inn"
@@ -95,6 +105,7 @@ namespace Project1 {
                 "I am on my way to the settlement of Sharnwick, and I think I've uncovered something big. " +
                 "If you're looking for work I'd reccomend you come down as I'll need someone to help me with the project.\n" +
                 "P.S. the trails to Sharnwick are notoriuos for being dangerous, so I suggest you get something from the armoury");
+            Console.WriteLine();
             string message = "What do you do next?";
             List<string> options = new List<string>() {
                 "Set out to sharnwick",
@@ -103,7 +114,7 @@ namespace Project1 {
             };
             switch (PresentOptions(options, message)) {
                 case 0:
-                    gs.current = "dead horses";
+                    gs.current = "ambush";
                     break;
                 case 1:
                     gs.current = "armoury";
@@ -111,6 +122,21 @@ namespace Project1 {
                 case 2:
                     gs.current = "inn";
                     break;
+            }
+        }
+
+        // Accessed from "inn" and "letter"
+        static void Chadford(GameState gs) {
+            Console.WriteLine("Your standing outside the inn, at one of the busy streets of the city of Chadford, " +
+                "holding the letter that you had recieved from the innkeeper. Across the street is an armoury, and " +
+                "further down is a road that goes leads to the small settlement of Sharnwick.");
+            if (HasBeenTo(gs, "letter") && !HasBeenTo(gs, "armoury")) {
+                Console.WriteLine("You think about what Baern told you about the road to Sharnwick being dangerous " +
+                    "and you have a gut feeling that you should follow his advice and take a visit to the armory");
+            }
+            if (HasBeenTo(gs, "armoury") && gs.gp < 10) {
+                Console.WriteLine("Now that you've bought what you need from the armoury, your feeling more prepared " +
+                    "to take on the world.");
             }
         }
 
@@ -125,35 +151,62 @@ namespace Project1 {
                 "Buy a lockpicking kit for 2gp",
                 "Buy a pair of binoculars for 2gp",
                 "Buy a bottle of the smith's 'rum' for 8gp",
-                "Set out for sharnwick"
+                "Head back out to the streets of Chadford"
             };
 
             if (HasBeenTo(gs, "armoury") == false) {
-                Console.WriteLine("The armoury is a small, old looking shop. The blacksmith is an old looking man " +
-                    "and at the counter is a vast array of different items. You reach into your pocket and pull out " +
-                    "the rest of the money you have left.");
+                Console.WriteLine("The armoury is a small, old looking shop. The blacksmith is an old looking man" +
+                    "at the counter is a vast array of different items.");
             }
-
-            Console.WriteLine("You currently have " + gs.gp + " gp");
 
             switch (PresentOptions(options, message)) {
                 case 0:
-                    Buy(gs, "sword", 10);
+                    if (gs.gp >= 10) {
+                        Console.WriteLine("You bought the sword");
+                        gs.inventory.Add("sword");
+                    } else {
+                        Console.WriteLine("You cannot afford that");
+                    }
                     break;
                 case 1:
-                    Buy(gs, "bow", 7);
+                    if (gs.gp >= 7) {
+                        Console.WriteLine("You bought the bow");
+                        gs.inventory.Add("bow");
+                    } else {
+                        Console.WriteLine("You cannot afford that");
+                    }
                     break;
                 case 2:
-                    Buy(gs, "arrow", 1);
+                    if (gs.gp >= 1) {
+                        Console.WriteLine("You bought the arrow");
+                        gs.inventory.Add("arrow");
+                    } else {
+                        Console.WriteLine("You cannot afford that");
+                    }
                     break;
                 case 3:
-                    Buy(gs, "lockpicking kit", 2);
+                    if (gs.gp >= 2) {
+                        Console.WriteLine("You bought the lockpicking kit");
+                        gs.inventory.Add("lockpicking kit");
+                    } else {
+                        Console.WriteLine("You cannot afford that");
+                    }
                     break;
                 case 4:
-                    Buy(gs, "binoculars", 2);
+                    if (gs.gp >= 2) {
+                        Console.WriteLine("You bought the binoculars");
+                        gs.inventory.Add("binoculars");
+                    } else {
+                        Console.WriteLine("You cannot afford that");
+                    }
                     break;
                 case 5:
-                    Buy(gs, "rum", 8);
+                    if (gs.gp >= 8) {
+                        Console.WriteLine("You bought the 'rum'");
+                        gs.inventory.Add("rum");
+                    } else {
+                        Console.WriteLine("You cannot afford that");
+                    }
                     break;
                 case 6:
                     Console.WriteLine("You set out to sharnwick");
@@ -169,25 +222,10 @@ namespace Project1 {
                 "you spot a dead horse sprawled about fifty feet ahead of you is, blocking the path. It several " +
                 "black-feathered arrows sticking out of it. The woods press close to the trail here, with a steep embankment " +
                 "and dense thickets on either side.");
-            List<string> options = new List<string>() {
-                "Ignore it and continue to sharnwick",
-                "Inspect the corpses of the dead horses"
-            };
-            if (HasItem(gs, "binoculars")) {
-                options.Add("Use your binoculars to inspect your surroundings");
-            }
-            if (HasItem(gs, "rum")) {
-                options.Add("Take a sip of the the smith's 'rum'");
-            }
+
+
 
             Console.ReadKey();
-        }
-
-        static void Inspect(GameState gs) {
-            Console.WriteLine("You approach the corpse of the dead horse and kneel beside it. On closer " +
-                "inspection you deduct that it must have been killed sometime within the past 24 hours. " +
-                "You look inside the saddlebags, they have looted, closing the pocket you notice the " +
-                "name, 'Baern', engraved the side of the emptied pouch.");
         }
 
         // Accessed from "dead horses"
@@ -202,7 +240,7 @@ namespace Project1 {
             int input = PresentOptions(options, message);
             switch (input) {
                 case 0:
-                    gs.current = "dead horses";
+                    gs.current = "ambush";
                     break;
             }
             Console.ReadKey();
@@ -232,7 +270,7 @@ namespace Project1 {
                 Console.WriteLine("B - Quit");
                 input = Console.ReadLine().ToLower();
             } while (input.Count() == 1 && input[0] >= 'a' && input[0] <= 'b');
-            switch(input) {
+            switch (input) {
                 case "a":
                     gs.current = "inn";
                     gs = NewGame();
@@ -283,25 +321,8 @@ namespace Project1 {
             return false;
         }
 
-        // Adds the last value of current to beenTo and ensuring that there are no duplicates
-        static void UpdateBeenTo (GameState gs) {
-            if (HasBeenTo(gs, gs.last) == false) {
-                gs.beenTo.Add(gs.last);
-            }
-            gs.last = gs.current;
-        }
-
-        // Accessed from "armoury"
-        // Prints appropriate message when player tries to buy an item and adds the item to the player's
-        // inventory if they have enough gold pieces
-        static void Buy (GameState gs, string item, int cost) {
-            if (gs.gp >= cost) {
-                Console.WriteLine("You bought the " + item);
-                gs.inventory.Add(item);
-                gs.gp -= cost;
-            } else {
-                Console.WriteLine("You cannot afford that");
-            }
+        static void UpdateBeenTo(GameState gs) {
+            gs.beenTo.Add(gs.current);
         }
 
         // Prints out options and prompts user to select one, message is printed with options presented
@@ -322,7 +343,7 @@ namespace Project1 {
         static GameState NewGame() {
             GameState gs = new GameState();
             gs.current = "menu";
-            gs.beenTo = new List<string>();
+            gs.beenTo = new List<string>() { "menu" };
             gs.inventory = new List<string>();
             gs.gp = 10;
             return gs;
@@ -330,22 +351,10 @@ namespace Project1 {
 
         // Contains all information about the player and the environment
         public class GameState {
-            // Contains string that corresponds to function that needs to be called from main next
             public string current;
-
-            // Contains list of items that the player is holding
             public List<string> inventory;
-
-            // Gold pieces (or gp for short) is the currency of the world in which the game is based
-            // Contains integer that corresponds to how many gold pieces the player is carrying
             public int gp;
-
-            // Contains list of every value current has been, except for its current value
-            // Only written to by UpdateBeenTo and only read by HasBeenTo 
             public List<string> beenTo;
-
-            // Only read and written to by UpdateBeenTo
-            public string last;
         }
     }
 }
