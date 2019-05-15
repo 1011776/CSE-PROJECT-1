@@ -76,14 +76,14 @@ namespace Project1 {
         // Accessed from "win", "lose" and "menu"
         // Describes main character being kicked out of an inn and recieving a letter
         static void Inn(GameState gs) {
-            if (HasBeenTo(gs, "inn") == false) {
+            if (HasBeenTo(gs, "inn")) {
                 Console.WriteLine("You re-enter the inn. The innkeeper is looking at you confused. I thought you were broke?");
                 if (gs.gp == 0) {
                     Console.WriteLine("You reach into your pockets to see if still have any gold pieces, your pockets are empty?" +
                         "'Sorry, dont have anything' you say, as you leave the inn.");
                 } else {
                     Console.WriteLine("Reaching into your pocket you pull out the few gold pieces you have left. You pull out " +
-                        gs.gp + "and hand it to the innkeeper. The inkeeper gives you another look and hands you your pieces back." +
+                        gs.gp + "gp and hand it to the . The inkeeper gives you another look and hands you your pieces back." +
                         "\"Thats not even close to enough\" he says. You decide to leave the inn, perhaps you'll come back when you've" +
                         "earned enough.");
                 }
@@ -331,8 +331,12 @@ namespace Project1 {
             return false;
         }
 
+        // Updates gs.beenTo to contain the last value that current was
         static void UpdateBeenTo(GameState gs) {
-            gs.beenTo.Add(gs.current);
+            if (HasBeenTo(gs, gs.last) == false) {
+                gs.beenTo.Add(gs.last);
+            }
+            gs.last = gs.current;
         }
 
         // Prints out options and prompts user to select one, message is printed with options presented
@@ -356,6 +360,7 @@ namespace Project1 {
             gs.beenTo = new List<string>() { "menu" };
             gs.inventory = new List<string>();
             gs.gp = 10;
+            gs.last = "menu";
             return gs;
         }
 
@@ -369,8 +374,12 @@ namespace Project1 {
             // Gold pieces or gp is the currency of the world of the game
             // Contains number based on how many gold pieces the player is carrying
             public int gp;
+            // Only written to by UpdateBeenTo
             // Contains list of all values that current has been except for what it currently is
             public List<string> beenTo;
+            // Only accessed by UpdateBeenTo
+            // Contains last value that current was
+            public string last;
         }
     }
 }
