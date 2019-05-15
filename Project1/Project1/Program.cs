@@ -121,7 +121,7 @@ namespace Project1 {
                 "further down is a road that goes leads to the small settlement of Sharnwick.");
             if (HasBeenTo(gs, "letter") && !HasBeenTo(gs, "armoury")) {
                 Console.WriteLine("You think about what Baern told you about the road to Sharnwick being dangerous " +
-                    "and you have a gut feeling that you should follow his advice and take a visit to the armory");
+                    "and you have a gut feeling that you should follow his advice and take a visit to the armoury");
             }
             if (HasBeenTo(gs, "armoury") && gs.gp < 10) {
                 Console.WriteLine("Now that you've bought what you need from the armoury, your feeling more prepared " +
@@ -130,7 +130,7 @@ namespace Project1 {
             string message = "What do you do next?";
             List<string> options = new List<string>() {
                 "Set out to sharnwick",
-                "Visit the armory",
+                "Visit the armoury",
                 "Read your letter",
                 "Revisit the inn"
             };
