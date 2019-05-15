@@ -133,11 +133,13 @@ namespace Project1 {
             }
             string message = "What do you do next?";
             List<string> options = new List<string>() {
-                "Set out to sharnwick",
                 "Visit the armoury",
                 "Read your letter",
                 "Revisit the inn"
             };
+            if (HasBeenTo(gs, "letter")) {
+                options.Add("Set out to Sharnwick");
+            }
             switch (PresentOptions(options, message)) {
                 case 0:
                     gs.current = "ambush";
