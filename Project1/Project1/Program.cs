@@ -142,7 +142,7 @@ namespace Project1 {
             }
             switch (options[PresentOptions(options, message)]) {
                 case "Set out to Sharnwick":
-                    gs.current = "dead horses";
+                    gs.current = "dead horse";
                     break;
                 case "Visit the armoury":
                     gs.current = "armoury";
