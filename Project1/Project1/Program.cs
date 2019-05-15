@@ -103,26 +103,12 @@ namespace Project1 {
             const string NAME = "Bilbo";
             Console.WriteLine("Opening the letter you read:\n Dear " + NAME + ",\n I'm writing this to let you know that " +
                 "I am on my way to the settlement of Sharnwick, and I think I've uncovered something big. " +
-                "If you're looking for work I'd reccomend you come down as I'll need someone to help me with the project.\n" +
-                "P.S. the trails to Sharnwick are notoriuos for being dangerous, so I suggest you get something from the armoury");
-            Console.WriteLine();
-            string message = "What do you do next?";
-            List<string> options = new List<string>() {
-                "Set out to sharnwick",
-                "Visit the armory",
-                "Revisit the inn"
-            };
-            switch (PresentOptions(options, message)) {
-                case 0:
-                    gs.current = "ambush";
-                    break;
-                case 1:
-                    gs.current = "armoury";
-                    break;
-                case 2:
-                    gs.current = "inn";
-                    break;
-            }
+                "If you're looking for work I'd reccomend you come down as I'll need someone to help me with the project.");
+            Console.WriteLine("P.S. I'm sure you already know, but the trails to Sharnwick are notoriuos for being " +
+                "dangerous, so I suggest you get something from the armoury");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            gs.current = "chadford";
         }
 
         // Accessed from "inn" and "letter"
@@ -137,6 +123,27 @@ namespace Project1 {
             if (HasBeenTo(gs, "armoury") && gs.gp < 10) {
                 Console.WriteLine("Now that you've bought what you need from the armoury, your feeling more prepared " +
                     "to take on the world.");
+            }
+            string message = "What do you do next?";
+            List<string> options = new List<string>() {
+                "Set out to sharnwick",
+                "Visit the armory",
+                "Read your letter",
+                "Revisit the inn"
+            };
+            switch (PresentOptions(options, message)) {
+                case 0:
+                    gs.current = "ambush";
+                    break;
+                case 1:
+                    gs.current = "armoury";
+                    break;
+                case 2:
+                    gs.current = "letter";
+                    break;
+                case 3:
+                    gs.current = "inn";
+                    break;
             }
         }
 
