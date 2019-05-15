@@ -221,8 +221,11 @@ namespace Project1 {
             List<string> options = new List<string>() {
                 "Ignore the dead horse"
             };
-            switch (PresentOptions(options, message)) {
-                case 0:
+            switch (options[PresentOptions(options, message)]) {
+                case "Ignore the dead horse":
+                    Console.WriteLine("You ignore the dead horse, stepping over it, and walk the rest of the way to Sharnwick.");
+                    gs.current = "sharnwick";
+                    break;
 
             }
 
@@ -233,17 +236,9 @@ namespace Project1 {
         // Baern is nowhere to be found in sharnwick and must back to search for him
         static void Sharnwick(GameState gs) {
             Console.WriteLine("After another few hours in the distance you spot the small town of Sharnwick. Theres a inn, shops, " +
-                "a chapel, but no Baern. You think to yourself \" maybe he's still hasn't left Bardford\".");
-            string message = "What do you do next?";
-            List<string> options = new List<string>() {
-                "Head back to Bardford"
-            };
-            int input = PresentOptions(options, message);
-            switch (input) {
-                case 0:
-                    gs.current = "ambush";
-                    break;
-            }
+                "a chapel. It isn't as big of a town as Chadford, so it doesn't take you long to visit all of the shops and houses. " +
+                "After looking around the town, you realise that you can't find Baern. Perhaps he's somewhere back in Chadford.");
+            
             Console.ReadKey();
         }
 
