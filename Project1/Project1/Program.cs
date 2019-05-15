@@ -26,7 +26,7 @@ namespace Project1 {
                     case "win":         Win(gs);        break;
                     case "lose":        Lose(gs);       break;
                     default:
-                        Console.WriteLine("An unexpected error has occured, the software will now quit");
+                        Console.WriteLine("An unexpected error has occured, the software will now quit.");
                         Console.ReadKey();
                         gs.current = "quit";
                         break;
@@ -67,7 +67,7 @@ namespace Project1 {
             Console.WriteLine("The Smith's Stash, written by Alistair Parkinson, is a text adventure as a part of a " +
                 "school project. This game is open-source, so feel free to use my code as per the MIT Licence. " +
                 "Currently this project is still in development so expect regular updates. I hope you enjoy my game.");
-            Console.WriteLine("Press any key to return to menu");
+            Console.WriteLine("Press any key to return to menu.");
             Console.ReadKey();
             Console.WriteLine();
             gs.current = "menu";
@@ -77,23 +77,24 @@ namespace Project1 {
         // Describes main character being kicked out of an inn and recieving a letter
         static void Inn(GameState gs) {
             if (HasBeenTo(gs, "inn")) {
-                Console.WriteLine("You re-enter the inn. The innkeeper is looking at you confused. I thought you were broke?");
+                Console.WriteLine("You re-enter the inn. The innkeeper is looking at you confused. \"I thought you were broke?\" " +
+                    "he said.");
                 if (gs.gp == 0) {
-                    Console.WriteLine("You reach into your pockets to see if still have any gold pieces, your pockets are empty?" +
-                        "'Sorry, dont have anything' you say, as you leave the inn.");
+                    Console.WriteLine("You reach into your pockets to see if still have any gold pieces. Your pockets are empty. " +
+                        "You turn around and head back out the inn forgetting what made you go back into the inn in the first place");
                 } else {
                     Console.WriteLine("Reaching into your pocket you pull out the few gold pieces you have left. You pull out " +
-                        gs.gp + "gp and hand it to the . The inkeeper gives you another look and hands you your pieces back." +
+                        gs.gp + "gp and hand it to the . The inkeeper gives you another look and hands you your pieces back. " +
                         "\"Thats not even close to enough\" he says. You decide to leave the inn, perhaps you'll come back when you've" +
                         "earned enough.");
                 }
             } else {
                 Console.WriteLine("You hand your keys over to the innkeeper. You’ll need find somewhere else to stay. " +
                     "Just as you exit the door the innkeeper reminds you \"Your friend Baern left a message for you, " +
-                    "take this\", the innkeeper hands you a letter");
+                    "take this\", the innkeeper hands you a letter.");
             }
             gs.inventory.Add("chadford");
-            Console.WriteLine("Press any key to continue");
+            Console.WriteLine("Press any key to continue.");
             Console.ReadKey();
             Console.WriteLine();
             gs.current = "chadford";
@@ -165,8 +166,15 @@ namespace Project1 {
             };
 
             if (HasBeenTo(gs, "armoury") == false) {
-                Console.WriteLine("The armoury is a small, old looking shop. The blacksmith is an old looking man" +
-                    "at the counter is a vast array of different items.");
+                Console.WriteLine("The armoury is a small shop which you haven't been inside before." +
+                    "On the inside is an weathered iron anvil, furnace and a workbench. Layed out across " +
+                    "the workbench is a vast array of different items. The blacksmith sits behind a counter, " +
+                    "putting final touches on the decorated spoon he had been working on, with a oiled rag. " +
+                    "He is an old looking man with a bald head and long black beard. " +
+                    "He asks if you are looking for anything.");
+            } else {
+                Console.WriteLine("The blacksmith sits behind a counter, still working on his spoon. " +
+                    "He asks if you are looking for anything.");
             }
 
             switch (PresentOptions(options, message)) {
