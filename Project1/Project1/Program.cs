@@ -85,7 +85,7 @@ namespace Project1 {
                     "he said.");
                 if (gs.gp == 0) {
                     Console.WriteLine("You reach into your pockets to see if still have any gold pieces. Your pockets are empty. " +
-                        "You turn around and head back out the inn forgetting what made you go back into the inn in the first place");
+                        "You turn around and walk out of the inn forgetting what made you go back in the first place");
                 } else {
                     Console.WriteLine("Reaching into your pocket you pull out the few gold pieces you have left. You pull out " +
                         gs.gp + "gp and hand it to the . The inkeeper gives you another look and hands you your pieces back. " +
@@ -175,12 +175,12 @@ namespace Project1 {
                 Console.WriteLine("The armoury is a small shop which you haven't been inside before." +
                     "On the inside is an weathered iron anvil, furnace and a workbench. Layed out across " +
                     "the workbench is a vast array of different items. The blacksmith sits behind a counter, " +
-                    "putting final touches on the decorated spoon he had been working on, with a oiled rag. " +
+                    "putting final touches on the decorated spoon he had been working on using a oiled rag. " +
                     "He is an old looking man with a bald head and long black beard. " +
                     "He asks if you are looking for anything.");
             } else {
                 Console.WriteLine("The blacksmith sits behind a counter. He is still rubbing the spoon with " +
-                    "the oiled rag, but then stops as he asks if you are looking for anything.");
+                    "the oiled rag. He stops for a second and asks if you are looking for anything.");
             }
 
             Console.WriteLine("You currently have " + gs.gp + "gp.");
