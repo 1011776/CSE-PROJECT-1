@@ -214,8 +214,8 @@ namespace Project1 {
         // The main character stumbles across a dead horse on the way to Sharnwick, they are attacked by goblins
         static void DeadHorse(GameState gs) {
             Console.WriteLine("You set off to sharnwick. After about half a day of travel, as you come around a bend, " +
-                "you spot a dead horse sprawled about fifty feet ahead of you. It is blocking the path. Several " +
-                "black-feathered arrows sticking out of it. The woods press close to the trail here, with a steep embankment " +
+                "you spot a dead horse sprawled about twenty meters ahead of you, blocking the path. Several " +
+                "black-feathered arrows stick out of it. The woods press close to the trail here, with a steep embankment " +
                 "and dense thickets on either side.");
             string message = "What do you do next?";
             List<string> options = new List<string>() {
