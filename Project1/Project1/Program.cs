@@ -69,6 +69,7 @@ namespace Project1 {
                 "Currently this project is still in development so expect regular updates. I hope you enjoy my game.");
             Console.WriteLine("Press any key to return to menu");
             Console.ReadKey();
+            Console.WriteLine();
             gs.current = "menu";
         }
 
@@ -83,7 +84,7 @@ namespace Project1 {
                 } else {
                     Console.WriteLine("Reaching into your pocket you pull out the few gold pieces you have left. You pull out " +
                         gs.gp + "and hand it to the innkeeper. The inkeeper gives you another look and hands you your pieces back." +
-                        "'Thats not even close to enough' he says. You decide to leave the inn, perhaps you'll come back when you've" +
+                        "\"Thats not even close to enough\" he says. You decide to leave the inn, perhaps you'll come back when you've" +
                         "earned enough.");
                 }
             } else {
@@ -94,6 +95,7 @@ namespace Project1 {
             gs.inventory.Add("chadford");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
+            Console.WriteLine();
             gs.current = "chadford";
         }
 
@@ -108,6 +110,7 @@ namespace Project1 {
                 "dangerous, so I suggest you get something from the armoury");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
+            Console.WriteLine();
             gs.current = "chadford";
         }
 
