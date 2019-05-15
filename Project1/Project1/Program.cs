@@ -5,7 +5,6 @@ using System.Linq;
 namespace Project1 {
     class Program {
 
-        // NOTE
         // Apart from the switch statement, main should remain the same regardless of new features added
         // New features and areas should be added as functions and included in the switch statement
         static void Main(string[] args) {
@@ -19,7 +18,7 @@ namespace Project1 {
                     case "chadford":    Chadford(gs);   break;
                     case "letter":      Letter(gs);     break;
                     case "armoury":     Armoury(gs);    break;
-                    case "dead horses": DeadHorses(gs); break;
+                    case "dead horse":  DeadHorse(gs);  break;
                     case "sharnwick":   Sharnwick(gs);  break;
                     case "hideout":     Hideout(gs);    break;
                     case "captured":    Captured(gs);   break;
@@ -187,52 +186,22 @@ namespace Project1 {
 
             switch (PresentOptions(options, message)) {
                 case 0:
-                    if (gs.gp >= 10) {
-                        Console.WriteLine("You bought the sword");
-                        gs.inventory.Add("sword");
-                    } else {
-                        Console.WriteLine("You cannot afford that");
-                    }
+                    Buy(gs, "sword", 10);
                     break;
                 case 1:
-                    if (gs.gp >= 7) {
-                        Console.WriteLine("You bought the bow");
-                        gs.inventory.Add("bow");
-                    } else {
-                        Console.WriteLine("You cannot afford that");
-                    }
+                    Buy(gs, "bow", 7);
                     break;
                 case 2:
-                    if (gs.gp >= 1) {
-                        Console.WriteLine("You bought the arrow");
-                        gs.inventory.Add("arrow");
-                    } else {
-                        Console.WriteLine("You cannot afford that");
-                    }
+                    Buy(gs, "arrow", 1);
                     break;
                 case 3:
-                    if (gs.gp >= 2) {
-                        Console.WriteLine("You bought the lockpicking kit");
-                        gs.inventory.Add("lockpicking kit");
-                    } else {
-                        Console.WriteLine("You cannot afford that");
-                    }
+                    Buy(gs, "lockpicking kit", 2);
                     break;
                 case 4:
-                    if (gs.gp >= 2) {
-                        Console.WriteLine("You bought the binoculars");
-                        gs.inventory.Add("binoculars");
-                    } else {
-                        Console.WriteLine("You cannot afford that");
-                    }
+                    Buy(gs, "binoculars", 2);
                     break;
                 case 5:
-                    if (gs.gp >= 8) {
-                        Console.WriteLine("You bought the 'rum'");
-                        gs.inventory.Add("rum");
-                    } else {
-                        Console.WriteLine("You cannot afford that");
-                    }
+                    Buy(gs, "rum", 8);
                     break;
                 case 6:
                     Console.WriteLine("You walk out the armoury.");
@@ -243,18 +212,24 @@ namespace Project1 {
 
         // Accessed from "letter" and "inn"
         // The main character stumbles across a dead horse on the way to Sharnwick, they are attacked by goblins
-        static void DeadHorses(GameState gs) {
+        static void DeadHorse(GameState gs) {
             Console.WriteLine("You set off to sharnwick. After about half a day of travel, as you come around a bend, " +
-                "you spot a dead horse sprawled about fifty feet ahead of you is, blocking the path. It several " +
+                "you spot a dead horse sprawled about fifty feet ahead of you. It is blocking the path. Several " +
                 "black-feathered arrows sticking out of it. The woods press close to the trail here, with a steep embankment " +
                 "and dense thickets on either side.");
+            string message = "What do you do next?";
+            List<string> options = new List<string>() {
+                "Ignore the dead horse"
+            };
+            switch (PresentOptions(options, message)) {
+                case 0:
 
-
+            }
 
             Console.ReadKey();
         }
 
-        // Accessed from "dead horses"
+        // Accessed from "dead horse"
         // Baern is nowhere to be found in sharnwick and must back to search for him
         static void Sharnwick(GameState gs) {
             Console.WriteLine("After another few hours in the distance you spot the small town of Sharnwick. Theres a inn, shops, " +
@@ -272,13 +247,26 @@ namespace Project1 {
             Console.ReadKey();
         }
 
-        // Accessed from "dead horses"
-        // The main character has snuck into the goblin's hideout
-        static void Hideout(GameState gs) {
-
+        // Accessed from multiple functions
+        // If the player chooses to drink the rum they die from poisoning
+        static void Rum(GameState gs) {
+            Console.WriteLine("The rum is an opaque looking liquid... if you could call it one. You pop the cork off, and " +
+                "a noxious smelling gas wafts from the lid. Trying not gag you take a sip from the bottle. You start to " +
+                "feel dizzy, and then tingling coming from all over your body. Your vision becomes blurry and you drop the " +
+                "bottle to the floor, causing it to shatter into hundreds of pieces. You fall over and and are knocked out " +
+                "unconcious.");
+            Console.WriteLine("Press any key to continue.");
+            Console.ReadKey();
+            gs.current = "lose";
         }
 
-        // Accessed from "desd horses"
+        // Accessed from "dead horse"
+        // The main character has snuck into the goblin's hideout
+        static void Hideout(GameState gs) {
+            
+        }
+
+        // Accessed from "desd horse"
         // The main character is captured by the goblin ambushers
         static void Captured(GameState gs) {
 
@@ -353,6 +341,19 @@ namespace Project1 {
                 gs.beenTo.Add(gs.last);
             }
             gs.last = gs.current;
+        }
+
+        // Prints appropriate message when player attempts to buy item
+        // Item is added to inventory of player only if they have enough gold
+        // Gold is deducted depending on the cost of the item
+        static void Buy(GameState gs, string item, int cost) {
+            if (gs.gp >= cost) {
+                Console.WriteLine("You bought the " + item);
+                gs.inventory.Add(item);
+                gs.gp -= cost;
+            } else {
+                Console.WriteLine("You cannot afford that");
+            }
         }
 
         // Prints out options and prompts user to select one, message is printed with options presented
