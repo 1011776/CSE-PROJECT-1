@@ -235,7 +235,7 @@ namespace Project1 {
         // Accessed from "dead horse"
         // Baern is nowhere to be found in sharnwick and must back to search for him
         static void Sharnwick(GameState gs) {
-            Console.WriteLine("After another few hours in the distance you spot the small town of Sharnwick. Theres a inn, shops, " +
+            Console.WriteLine("After another few hours in the distance you spot the small town of Sharnwick. Theres a inn, shops and " +
                 "a chapel. It isn't as big of a town as Chadford, so it doesn't take you long to visit all of the shops and houses. " +
                 "After looking around the town, you realise that you can't find Baern. Perhaps he's somewhere back in Chadford.");
             
