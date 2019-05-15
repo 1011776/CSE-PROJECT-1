@@ -121,7 +121,7 @@ namespace Project1 {
 
         // Accessed from "inn" and "letter"
         static void Chadford(GameState gs) {
-            Console.WriteLine("Your standing outside the inn, at one of the busy streets of the city of Chadford, " +
+            Console.WriteLine("You are standing outside the inn, at one of the busy streets of the city of Chadford, " +
                 "holding the letter that you had recieved from the innkeeper. Across the street is an armoury, and " +
                 "further down is a road that goes leads to the small settlement of Sharnwick.");
             if (HasBeenTo(gs, "letter") && !HasBeenTo(gs, "armoury")) {
