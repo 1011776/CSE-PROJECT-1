@@ -162,7 +162,7 @@ namespace Project1 {
                 "Buy a lockpicking kit for 2gp",
                 "Buy a pair of binoculars for 2gp",
                 "Buy a bottle of the smith's 'rum' for 8gp",
-                "Head back out to the streets of Chadford"
+                "Exit the armoury"
             };
 
             if (HasBeenTo(gs, "armoury") == false) {
@@ -227,8 +227,8 @@ namespace Project1 {
                     }
                     break;
                 case 6:
-                    Console.WriteLine("You set out to sharnwick");
-                    gs.current = "sharnwick";
+                    Console.WriteLine("You walk out the armoury.");
+                    gs.current = "chadford";
                     break;
             }
         }
