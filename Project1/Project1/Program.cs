@@ -42,7 +42,8 @@ namespace Project1 {
         // First function that runs when application is ran 
         // Prints title screen shows user with options to start a new game and view about screen
         static void Menu(GameState gs) {
-            Console.WriteLine("The Smith's stash");
+            Console.WriteLine("The Smith's Stash");
+            Console.WriteLine("By Alistair Parkinson");
             string message = "Choose an option.";
             List<string> options = new List<string>() {
                 "Play Game",
