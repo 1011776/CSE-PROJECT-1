@@ -121,12 +121,12 @@ namespace Project1 {
 
         // Accessed from "inn" and "letter"
         static void Chadford(GameState gs) {
-            Console.WriteLine("You are standing outside the inn, at one of the busy streets of the city of Chadford, " +
-                "holding the letter that you had recieved from the innkeeper. Across the street is an armoury, and " +
-                "further down is a road that goes leads to the small settlement of Sharnwick.");
+            Console.WriteLine("You are standing outside the inn, at one of the busy streets of the city of Chadford. " +
+                "You are currently holding the letter that you had recieved from the innkeeper. Across the street is " +
+                "an armoury, and further down the street is a road that goes leads to the settlement of Sharnwick.");
             if (HasBeenTo(gs, "letter") && !HasBeenTo(gs, "armoury")) {
                 Console.WriteLine("You think about what Baern told you about the road to Sharnwick being dangerous " +
-                    "and you have a gut feeling that you should follow his advice and take a visit to the armoury");
+                    "and you have a gut feeling that you should follow his advice and take a visit to the armoury.");
             }
             if (HasBeenTo(gs, "armoury") && gs.gp < 10) {
                 Console.WriteLine("Now that you've bought what you need from the armoury, your feeling more prepared " +
@@ -179,9 +179,11 @@ namespace Project1 {
                     "He is an old looking man with a bald head and long black beard. " +
                     "He asks if you are looking for anything.");
             } else {
-                Console.WriteLine("The blacksmith sits behind a counter, still working on his spoon. " +
-                    "He asks if you are looking for anything.");
+                Console.WriteLine("The blacksmith sits behind a counter. He is still rubbing the spoon with " +
+                    "the oiled rag, but then stops as he asks if you are looking for anything.");
             }
+
+            Console.WriteLine("You currently have " + gs.gp + "gp.");
 
             switch (PresentOptions(options, message)) {
                 case 0:
