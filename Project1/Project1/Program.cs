@@ -141,17 +141,17 @@ namespace Project1 {
             if (HasBeenTo(gs, "letter")) {
                 options.Add("Set out to Sharnwick");
             }
-            switch (PresentOptions(options, message)) {
-                case 0:
+            switch (options[PresentOptions(options, message)]) {
+                case "Set out to Sharnwick":
                     gs.current = "ambush";
                     break;
-                case 1:
+                case "Visit the armoury":
                     gs.current = "armoury";
                     break;
-                case 2:
+                case "Read your letter":
                     gs.current = "letter";
                     break;
-                case 3:
+                case "Revisit the inn":
                     gs.current = "inn";
                     break;
             }
