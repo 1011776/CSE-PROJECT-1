@@ -269,6 +269,8 @@ namespace Project1 {
             }
         }
 
+        // Accessed from "dead horse"
+        // Three goblins have gotten the jump on the main character and the player is captured
         static void Ambushed(GameState gs) {
             Console.WriteLine("Suddenly from out of nowhere an arrow narrowly misses your head and plants itself into a tree next to you. " +
                         "Looking at the arrow, it has the same black feathers that you saw sticking out of the horse. You turn to look at where the " +
@@ -352,7 +354,7 @@ namespace Project1 {
 
         }
 
-        // Accessed from "desd horse"
+        // Accessed from "ambushed"
         // The main character is captured by the goblin ambushers
         static void Captured(GameState gs) {
             Console.WriteLine("The goblins take you down a concealed path at the side of the road. The trail is a narrow path that winds through " +
