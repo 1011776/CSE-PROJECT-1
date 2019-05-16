@@ -418,6 +418,7 @@ namespace Project1 {
                             "One goblin draws its bow and releases an arrow. It is an easy shot, and the arrow hits you square in the chest.");
                     }
                     gs.current = "lose";
+                    Pause();
                     break;
                 case 2:
                     if (HasItem(gs, "sword")) {
