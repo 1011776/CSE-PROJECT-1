@@ -4,7 +4,6 @@ using System.Linq;
 
 namespace Project1 {
     class Program {
-
         // Apart from the switch statement, main should remain the same regardless of new features added
         // New features and areas should be added as functions and included in the switch statement
         static void Main(string[] args) {
@@ -34,7 +33,7 @@ namespace Project1 {
                     case "lose":        Lose(gs);       break;
                     default:
                         Console.WriteLine("An unexpected error has occured.");
-                        Console.WriteLine("gs.current " + gs.current + " is an invalid value.");
+                        Console.WriteLine("gs.current =" + gs.current + " and is an invalid value.");
                         Console.WriteLine("The software will now quit.");
                         Pause();
                         gs.current = "quit";
@@ -497,6 +496,7 @@ namespace Project1 {
                             "You release the arrow and it hits the guard.");
                         Pause();
                         Console.WriteLine("Using the keys that the guard dropped when you hit it with the arrow, you unlock the cell and free Baern");
+                        gs.current = "win";
                     } else {
                         if (HasItem(gs, "bow")) {
                             Console.WriteLine("You have a bow, but you are out of arrows.");
@@ -521,7 +521,7 @@ namespace Project1 {
                 case 1:
                     Console.WriteLine("The goblin guard is looking a little drowsy. You decide to take this opportunity to try take the keys " +
                         "from it without it noticing. The goblin guard however, wakes up and hits you with its club, knocking you out.");
-                    Console.WriteLine("You eventually wake up inside the cell that the guard was taking after");
+                    Console.WriteLine("You eventually wake up inside the cell that the guard was taking after.");
                     gs.current = "captured";
                     break;
             }
