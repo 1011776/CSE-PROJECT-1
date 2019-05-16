@@ -46,6 +46,7 @@ namespace Project1 {
         static void Menu(GameState gs) {
             Console.WriteLine("The Smith's Stash");
             Console.WriteLine("By Alistair Parkinson");
+            Console.WriteLine();
             string message = "Choose an option.";
             List<string> options = new List<string>() {
                 "Play Game",
@@ -252,6 +253,10 @@ namespace Project1 {
             if (HasItem(gs, "rum")) {
                 options.Add("Drink the rum");
             }
+            if (gs.spottedGoblins) {
+                options.Add("Wait and stay out of sight of the goblins.");
+                options.Add("Try to sneak attack the goblins.");
+            }
             switch (options[PresentOptions(options, message)]) {
                 case "Head to Sharnwick":
                     switch (gs.last) {
@@ -360,17 +365,18 @@ namespace Project1 {
                 case 2:
                     if (HasItem(gs, "sword")) {
                         Console.WriteLine("You lay your sword on the floor and stand still");
+                        gs.inventory.Remove("sword");
                     } else if (HasItem(gs, "bow")) {
                         Console.WriteLine("You lay your bow on the floor and stand still.");
+                        gs.inventory.Remove("bow");
                     } else {
                         Console.WriteLine("You put your hands up, and stand still.");
                     }
                     Console.WriteLine("With their bows still pointing at you they slowly approach you, before they tie your hands behind your " +
                         "back.");
+                    gs.current = "captured";
                     break;
             }
-            Pause();
-            gs.current = "quit";
         }
 
         // Accessed from "dead horse"
@@ -418,9 +424,22 @@ namespace Project1 {
         // The main character is captured by the goblin ambushers
         static void Captured(GameState gs) {
             Console.WriteLine("The goblins take you down a concealed path at the side of the road. The trail is a narrow path that winds through " +
-                "the thick forrests that surround the road. Eventually you arrive at a cave, which is dimly lit by torches mounted to the walls. " +
-                "They then take you to a prison cell in which they lock you inside.");
+                "the thick forrests that surround the road.");
+            Pause();
+            Console.WriteLine("Eventually you arrive at a cave, which is dimly lit by torches mounted to the walls. " +
+                "They then take you to a prison cell in which they lock you inside. A goblin guard stands by the cell with the keys attatched " +
+                "to his belt.");
+            Pause();
+            Console.WriteLine("In the dim light of the cell, you recognise a familiar face, Baern. Baern tells you \"I was afraid this might" +
+                "happen, now you've been dragged into this mess\". ");
+            Pause();
+            if (HasItem(gs, "lockpicking kit") && HasItem(gs, "rum")) {
+                List<string> options = new List<string>() { "Drink the 'rum'", "Offer the 'rum' to the guard", "Use the lockpicking kit on the cell" };
 
+            } else {
+                Console.WriteLine("With no weapons or items to help you, you don't know what to do. You have run out of options.");
+                gs.current = "lose";
+            }
         }
 
         // Accessed when the player wins the game
