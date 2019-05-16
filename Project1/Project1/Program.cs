@@ -83,18 +83,23 @@ namespace Project1 {
             if (HasBeenTo(gs, "inn")) {
                 Console.WriteLine("You re-enter the inn. The innkeeper is looking at you confused. \"I thought you were broke?\" " +
                     "he said.");
+                Pause();
                 if (gs.gp == 0) {
-                    Console.WriteLine("You reach into your pockets to see if still have any gold pieces. Your pockets are empty. " +
-                        "You turn around and walk out of the inn forgetting what made you go back in the first place");
+                    Console.WriteLine("You reach into your pockets to see if still have any gold pieces. Your pockets are empty. ");
+                    Pause();
+                    Console.WriteLine("You turn around and walk out of the inn forgetting what made you go back in the first place");
                 } else {
                     Console.WriteLine("Reaching into your pocket you pull out the few gold pieces you have left. You pull out " +
-                        gs.gp + "gp and hand it to the . The inkeeper gives you another look and hands you your pieces back. " +
+                        gs.gp + "gp and hand it to the innkeeper.");
+                    Pause();
+                    Console.WriteLine("The inkeeper gives you another look and hands you the gold pieces back. " +
                         "\"Thats not even close to enough\" he says. You decide to leave the inn, perhaps you'll come back when you've" +
                         "earned enough.");
                 }
             } else {
-                Console.WriteLine("You hand your keys over to the innkeeper. You’ll need find somewhere else to stay. " +
-                    "Just as you exit the door the innkeeper reminds you \"Your friend Baern left a message for you, " +
+                Console.WriteLine("You hand your keys over to the innkeeper. You’ll need find somewhere else to stay. ");
+                Pause();
+                Console.WriteLine("Just as you exit the door the innkeeper reminds you \"Your friend Baern left a message for you, " +
                     "take this\", the innkeeper hands you a letter.");
             }
             gs.inventory.Add("chadford");
@@ -107,8 +112,10 @@ namespace Project1 {
         static void Letter(GameState gs) {
             const string NAME = "Bilbo";
             Console.WriteLine("Opening the letter you read:\n Dear " + NAME + ",\n I'm writing this to let you know that " +
-                "I am on my way to the settlement of Sharnwick, and I think I've uncovered something big. " +
-                "If you're looking for work I'd reccomend you come down as I'll need someone to help me with the project.");
+                "I am on my way to the settlement of Sharnwick, and I think I've uncovered something big. ");
+            Pause();
+            Console.WriteLine("If you're looking for work I'd reccomend you come down as I'll need someone to help me with the project.");
+            Pause();
             Console.WriteLine("P.S. I'm sure you already know, but the trails to Sharnwick are notoriuos for being " +
                 "dangerous, so I suggest you get something from the armoury");
             Pause();
@@ -121,10 +128,12 @@ namespace Project1 {
                 "You are currently holding the letter that you had recieved from the innkeeper. Across the street is " +
                 "an armoury, and further down the street is a road that goes leads to the settlement of Sharnwick.");
             if (HasBeenTo(gs, "letter") && !HasBeenTo(gs, "armoury")) {
+                Pause();
                 Console.WriteLine("You think about what Baern told you about the road to Sharnwick being dangerous " +
                     "and you have a gut feeling that you should follow his advice and take a visit to the armoury.");
             }
             if (HasBeenTo(gs, "armoury") && gs.gp < 10) {
+                Pause();
                 Console.WriteLine("Now that you've bought what you need from the armoury, your feeling more prepared " +
                     "to take on the world.");
             }
@@ -176,7 +185,9 @@ namespace Project1 {
             if (HasBeenTo(gs, "armoury") == false) {
                 Console.WriteLine("The armoury is a small shop which you haven't been inside before." +
                     "On the inside is an weathered iron anvil, furnace and a workbench. Layed out across " +
-                    "the workbench is a vast array of different items. The blacksmith sits behind a counter, " +
+                    "the workbench is a vast array of different items.");
+                    
+                Console.WriteLine("The blacksmith sits behind a counter, " +
                     "putting final touches on the decorated spoon he had been working on using a oiled rag. " +
                     "He is an old looking man with a bald head and long black beard. " +
                     "He asks if you are looking for anything.");
@@ -184,7 +195,7 @@ namespace Project1 {
                 Console.WriteLine("The blacksmith sits behind a counter. He is still rubbing the spoon with " +
                     "the oiled rag. He stops for a second and asks if you are looking for anything.");
             }
-
+            Pause();
             Console.WriteLine("You currently have " + gs.gp + "gp.");
 
             switch (PresentOptions(options, message)) {
@@ -238,6 +249,9 @@ namespace Project1 {
                 "Have a closer look at your surroundings",
                 "Head to Sharnwick"
             };
+            if (HasItem(gs, "rum")) {
+                options.Add("Drink the rum");
+            }
             switch (options[PresentOptions(options, message)]) {
                 case "Head to Sharnwick":
                     switch (gs.last) {
@@ -276,6 +290,9 @@ namespace Project1 {
                     break;
                 case "Have a closer look at your surroundings":
                     gs.current = "surrounds";
+                    break;
+                case "Drink the rum":
+                    gs.current = "rum";
                     break;
             }
         }
