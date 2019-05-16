@@ -282,9 +282,11 @@ namespace Project1 {
                 Pause();
                 Console.WriteLine("Through your binoculars, you spot three goblins crouching behind a bush. They are armed with bows. " +
                     "However they don't seem to have spotted you.");
+                gs.spottedGoblins = true;
             } else {
                 Console.WriteLine("You don't see anything but you get the feeling that you are being watched.");
             }
+            Pause();
             gs.current = "dead horse";
         }
 
@@ -499,6 +501,7 @@ namespace Project1 {
             gs.inventory = new List<string>();
             gs.gp = 10;
             gs.last = "menu";
+            gs.spottedGoblins = false;
             return gs;
         }
 
@@ -523,6 +526,8 @@ namespace Project1 {
             // Written to by UpdateBeenTo
             // Contains last value that current was. Unless current has been written to before UpdateBeenTo has been called
             public string last;
+            // Shows whether the player has or hasn't seen the goblin ambushes on the trail between Chadwick and Sharnwick
+            public bool spottedGoblins;
         }
     }
 }
