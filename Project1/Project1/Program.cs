@@ -375,7 +375,6 @@ namespace Project1 {
             } else {
                 Console.WriteLine("You don't see anything but you get the feeling that you are being watched.");
             }
-            Pause();
             gs.current = "dead horse";
         }
 
