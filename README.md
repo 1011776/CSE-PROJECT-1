@@ -5,7 +5,7 @@ This repository is the repository for the role playing game The Smith's Stash. T
 <br/><br/>
 I have used tags to label the working versions of the code, these will be the least buggy. 
 <br/><br/>
-I highly reccomend that you test my code and provide your feedback via this Google Form __LINK_COMING_SOON__, as it will help guide the development of my project. 
+I highly reccomend that you test my code and provide your feedback via this Google Form https://forms.gle/kWnM8tDgUyhxNsPy6, as it will help guide the development of my project. 
 <br/><br/>
 Finally, I have chosen to make my project open source, so I encourage you to use my code in your own projects as per the MIT Licence included.
 
