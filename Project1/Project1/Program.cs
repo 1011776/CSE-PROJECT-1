@@ -212,7 +212,7 @@ namespace Project1 {
             }
         }
 
-        // Accessed from "chadwick" and "surroundings"
+        // Accessed from "chadwick" and "surrounds"
         // The main character stumbles across a dead horse on the way to Sharnwick, they are attacked by goblins
         static void DeadHorse(GameState gs) {
             switch (gs.last) {
@@ -233,6 +233,7 @@ namespace Project1 {
             List<string> options = new List<string>() {
                 "Head to Chadford",
                 "Call out to see if anyone is around",
+                "Have a closer look at your surroundings",
                 "Head to Sharnwick"
             };
             switch (options[PresentOptions(options, message)]) {
@@ -267,6 +268,9 @@ namespace Project1 {
                     }
                     Pause();
                     gs.current = "chadford";
+                    break;
+                case "Have a closer look at your surroundings":
+                    gs.current = "surrounds";
                     break;
             }
         }
@@ -506,6 +510,7 @@ namespace Project1 {
         }
 
         // Contains all information about the player and the environment
+        // Use GameState rather than global varialbes
         public class GameState {
             // Contains string that corresponds to a the next function that needs to be called
             // Read by main and written to by functions outside main 
