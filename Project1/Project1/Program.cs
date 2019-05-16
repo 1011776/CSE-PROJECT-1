@@ -277,7 +277,35 @@ namespace Project1 {
         static void Ambushed(GameState gs) {
             Console.WriteLine("Suddenly from out of nowhere an arrow narrowly misses your head and plants itself into a tree next to you. " +
                         "Looking at the arrow, it has the same black feathers that you saw sticking out of the horse. You turn to look at where the " +
-                        "arrow came from. Standing behind a shrub, are three goblins with their bows and arrows pointed at you.");
+                        "arrow came from. Standing behind a shrub about 20 meters away, are three goblins with their bows and arrows pointed at you.");
+            string message = "what do you do next?";
+            List<string> options = new List<string> { "Try to run from the goblins", "Try to attack the goblins", "Put your hands up and stay still" };
+            switch (PresentOptions(options, message)) {
+                case 0:
+                    Console.WriteLine("You turn around and try to make a run from the goblins. One of the goblins fire an arrow at you " +
+                        "and it hits you back, dealing a lethal blow to you.");
+                    gs.current = "lose";
+                    break;
+                case 1:
+                    if (HasItem(gs, "sword")) {
+                        Console.WriteLine("You draw your sword and charge at the goblins. The goblins do not hesitate to react. One fires a arrow at " +
+                            "you, you swing your sword in an attempt to deflect it, but you miss. The arrow hits you in the chest.");
+                    } else if (HasItem(gs, "bow") && HasItem(gs, "arrow")) {
+                        Console.WriteLine("You draw your bow, knock an arrow into it, and fire a shot in the direction of the goblins. Due to it " +
+                            "being the first time you had weilded a bow and being under pressure, you completely miss. The goblins do not hesitate " +
+                            "to react and fire an arrow at you which hits you in the chest.");
+                    } else {
+                        Console.WriteLine("Despite being unarmed, you charge at the goblins. The goblins do not hesitate to react. From 10 meters away" +
+                            "The goblins land an easy shot on you. The arrow hits you square in the chest.");
+                    }
+                    gs.current = "lose";
+                    Console.WriteLine("Press any key to continue");
+                    Console.ReadKey();
+                    break;
+                case 2:
+                    /////////////WIP
+                    break;
+            }
             Console.ReadKey();
             gs.current = "quit";
         }
