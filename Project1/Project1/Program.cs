@@ -314,8 +314,15 @@ namespace Project1 {
 
         // Accessed from "dead horse"
         // The main character, waits for the goblins to leave and then follows them back to their hideout
+        // Regardless of player decisions, function accesses "hideout"
         static void Sneak(GameState gs) {
-        
+            Console.WriteLine("You find a hiding spot behind a rock, where you can still see the goblins. You sit there watching them as to see " +
+                "what they do");
+            Pause();
+            Console.WriteLine("After about half an hour, the goblins get up and head down a concealed trail at the side of the road.");
+            Pause();
+            Console.WriteLine("You choose to keep them in sight, tailing them so that they don't notice you.");
+            Pause();
         }
 
         // Accessed from "dead horse"
@@ -327,7 +334,7 @@ namespace Project1 {
                 Console.WriteLine("The goblins noticed that one of them had been shot, but not noticed the direction in which the arrow " +
                     "came from. Driven by fear, the two goblins run down a a concealed trail by the side of the road.");
                 Pause();
-                Console.WriteLine("Curious as to know what they were doing hiding by the side of the you follow them, making sure " +
+                Console.WriteLine("Curious as to know what they were doing hiding by the side of the road, you choose to follow them, making sure " +
                     "that you keep your distance between them as to not be noticed.");
                 Pause();
                 gs.current = "hideout";
