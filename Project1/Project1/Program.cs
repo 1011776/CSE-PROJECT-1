@@ -423,16 +423,18 @@ namespace Project1 {
         // Accessed from "ambushed"
         // The main character is captured by the goblin ambushers
         static void Captured(GameState gs) {
-            Console.WriteLine("The goblins take you down a concealed path at the side of the road. The trail is a narrow path that winds through " +
-                "the thick forrests that surround the road.");
-            Pause();
-            Console.WriteLine("Eventually you arrive at a cave, which is dimly lit by torches mounted to the walls. " +
-                "They then take you to a prison cell in which they lock you inside. A goblin guard stands by the cell with the keys attatched " +
-                "to his belt.");
-            Pause();
-            Console.WriteLine("In the dim light of the cell, you recognise a familiar face, Baern. Baern tells you \"I was afraid this might" +
-                "happen, now you've been dragged into this mess\". ");
-            Pause();
+            if (gs.last == "ambushed") {
+                Console.WriteLine("The goblins take you down a concealed path at the side of the road. The trail is a narrow path that winds through " +
+                    "the thick forrests that surround the road.");
+                Pause();
+                Console.WriteLine("Eventually you arrive at a cave, which is dimly lit by torches mounted to the walls. " +
+                    "They then take you to a prison cell in which they lock you inside. A goblin guard stands by the cell with the keys attatched " +
+                    "to his belt.");
+                Pause();
+                Console.WriteLine("In the dim light of the cell, you recognise a familiar face, Baern. Baern tells you \"I was afraid this might" +
+                    "happen, now you've been dragged into this mess\". ");
+                Pause();
+            }
             string message = "What do you do next?";
             List<string> options = new List<string>();
             if (HasItem(gs, "lockpicking kit") && HasItem(gs, "rum")) {
@@ -465,6 +467,24 @@ namespace Project1 {
                 gs.current = "lose";
             }
         }
+
+        // Accessed from "captured"
+        // The main character tries to break free from the cell using a lockpik but fails
+        // Regardless of player decisions, function accesses "lose"
+        static void Escape(GameState gs) {
+            Console.WriteLine("You show the lockpicking kit to Baern, and his eyes light up. You quietly stand up to the cell lock, and try" +
+                "your best to lockpick it.");
+            Pause();
+            Console.WriteLine("Despite not being proficient in using the lockpicking kit you manage to break the lock. You give a thumbs up " +
+                "to Baern. As you push the cell door open, it makes a loud creeeek. ");
+            Pause();
+            Console.WriteLine("The goblin guard who had almost fallen asleep on post, wakes up, turns around points his spear at you." +
+                "you are given no choice but to forfeit your lockpicking kit and return to your cell.");
+            gs.inventory.Remove("lockpicking kit");
+            Pause();
+            gs.current = "Captured";
+        }
+        
 
         // Accessed when the player wins the game
         // Lets player know that they have won the game, gives the player option to play again or quit
