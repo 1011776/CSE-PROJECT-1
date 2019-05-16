@@ -360,10 +360,12 @@ namespace Project1 {
 
         // Updates gs.beenTo to contain the last value that current was
         static void UpdateBeenTo(GameState gs) {
-            if (HasBeenTo(gs, gs.last) == false) {
-                gs.beenTo.Add(gs.last);
+            if (HasBeenTo(gs, gs.cache) == false) {
+                gs.beenTo.Add(gs.cache);
             }
-            gs.last = gs.current;
+            string oldCache = gs.cache;
+            gs.cache = gs.current;
+            gs.last = oldCache;
         }
 
         // Prints appropriate message when player attempts to buy item
@@ -416,8 +418,14 @@ namespace Project1 {
             public int gp;
             // Only written to by UpdateBeenTo
             // Contains list of all values that current has been except for what it currently is
+            // It is reccomended that HasBeenTo is called rather than accessing the beenTo variable 
             public List<string> beenTo;
-            // Contains last value that current was
+            // Only accessed by UpdateBeenTo
+            // Contains last value that current was, unless updateBeenTo has been called before current is modified
+            // It is not reccomended that this variable is not accessed by functions apart from UpdateBeenTo
+            public string cache;
+            // Written to by UpdateBeenTo
+            // Contains last value that current was. Unless current has been written to before UpdateBeenTo has been called
             public string last;
         }
     }
