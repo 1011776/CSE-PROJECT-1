@@ -21,6 +21,7 @@ namespace Project1 {
                     case "dead horse": DeadHorse(gs); break;
                     case "sharnwick": Sharnwick(gs); break;
                     case "hideout": Hideout(gs); break;
+                    case "rum": Rum(gs); break;
                     case "captured": Captured(gs); break;
                     case "win": Win(gs); break;
                     case "lose": Lose(gs); break;
@@ -140,6 +141,9 @@ namespace Project1 {
             if (HasBeenTo(gs, "letter")) {
                 options.Add("Set out to Sharnwick");
             }
+            if (HasItem(gs, "rum")) {
+                options.Add("Drink the rum");
+            }
             switch (options[PresentOptions(options, message)]) {
                 case "Set out to Sharnwick":
                     gs.current = "dead horse";
@@ -152,6 +156,9 @@ namespace Project1 {
                     break;
                 case "Revisit the inn":
                     gs.current = "inn";
+                    break;
+                case "Drink the rum":
+                    gs.current = "rum";
                     break;
             }
         }
@@ -276,11 +283,19 @@ namespace Project1 {
         // Accessed from multiple functions
         // If the player chooses to drink the rum they die from poisoning
         static void Rum(GameState gs) {
-            Console.WriteLine("The rum is an opaque looking liquid... if you could call it one. You pop the cork off, and " +
-                "a noxious smelling gas wafts from the lid. Trying not gag you take a sip from the bottle. You start to " +
-                "feel dizzy, and then tingling coming from all over your body. Your vision becomes blurry and you drop the " +
-                "bottle to the floor, causing it to shatter into hundreds of pieces. You fall over and and are knocked out " +
-                "unconcious.");
+            Console.WriteLine("The rum is an dark thick opaque looking liquid... if you could even call it a liquid. " +
+                "You pop the cork off, and a noxious smelling odour wafts from the opening of the bottle.");
+            Console.WriteLine("You are having second thoughts about drinking the smith's 'rum'.");
+            switch (PresentOptions(new List<string>() { "Yes", "No " }, "Are you sure you want to drink the 'rum'.")) {
+                case 0:
+                    Console.WriteLine("Reluctantly, you take a sip of the smith's 'rum'. You start to feel dizzy, then tingling " +
+                        "coming from all over your body and your vision stating to blur. Before you know it you have passed out.");
+                    break;
+                case 1:
+                    Console.WriteLine("You put the cork back on the bottle.");
+                    break;
+            }
+               
             Console.WriteLine("Press any key to continue.");
             Console.ReadKey();
             gs.current = "lose";
