@@ -245,6 +245,7 @@ namespace Project1 {
                             Console.WriteLine("You ignore the dead horse, stepping over it, and walk the rest of the way to Sharnwick.");
                             break;
                     }
+                    Pause();
                     gs.current = "sharnwick";
                     break;
                 case "Call out to see if anyone is around":
@@ -262,6 +263,7 @@ namespace Project1 {
                             Console.WriteLine("You ignore the dead horse, stepping over it, and walk the rest of the way to Chadford.");
                             break;
                     }
+                    Pause();
                     gs.current = "chadford";
                     break;
             }
@@ -315,6 +317,7 @@ namespace Project1 {
             Console.WriteLine("After another few hours in the distance you spot the small town of Sharnwick. Theres a inn, shops and " +
                 "a chapel. It isn't as big of a town as Chadford, so it doesn't take you long to visit all of the shops and houses. " +
                 "After looking around the town, you realise that you can't find Baern. Perhaps he's somewhere back in Chadford.");
+            Pause();
             Console.WriteLine("You decide, as there is nothing else to do, to turn back and head back to Chadford.");
             Pause();
             gs.current = "dead horse";
