@@ -237,6 +237,7 @@ namespace Project1 {
             string message = "What do you do next?";
             List<string> options = new List<string>() {
                 "Head to Chadford",
+                "Call out to see if anyone is around",
                 "Head to Sharnwick"
             };
             switch (options[PresentOptions(options, message)]) {
@@ -252,6 +253,11 @@ namespace Project1 {
                     }
                     gs.current = "sharnwick";
                     break;
+                case "Call out to see if anyone is around":
+                    Console.WriteLine("You shout out \"Is anyone around\", there was no response. You do it again, but again, there was no " +
+                        "response.");
+                    gs.current = "ambushed";
+                        break;
                 case "Head to Chadford":
                     switch (gs.last) {
                         case "chadford":
@@ -265,6 +271,14 @@ namespace Project1 {
                     gs.current = "chadford";
                     break;
             }
+        }
+
+        static void Ambushed(GameState gs) {
+            Console.WriteLine("Suddenly from out of nowhere an arrow narrowly misses your head and plants itself into a tree next to you. " +
+                        "Looking at the arrow, it has the same black feathers that you saw sticking out of the horse. You turn to look at where the " +
+                        "arrow came from. Standing behind a shrub, are three goblins with their bows and arrows pointed at you.");
+            Console.ReadKey();
+            gs.current = "quit";
         }
 
         // Accessed from "dead horse"
