@@ -485,7 +485,13 @@ namespace Project1 {
             Pause();
             gs.current = "Captured";
         }
-        
+
+        // Accessed from "Captured"
+        // The main character offers the rum to the goblin guard, causing the goblin guard to pass out and drop his keys
+        // Regardless of player decisions, function accesses "win"
+        static void RumGuard(GameState gs) {
+
+        }
 
         // Accessed when the player wins the game
         // Lets player know that they have won the game, gives the player option to play again or quit
