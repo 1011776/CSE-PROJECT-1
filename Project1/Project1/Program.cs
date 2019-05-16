@@ -299,6 +299,9 @@ namespace Project1 {
             gs.current = "dead horse";
         }
 
+        // Accessed from "dead horse"
+        // The main characters has a closer inspection of the dead horse and notices that the horse belongs to Baern.
+        // Regardless of player decisions, function accesses "ambushed"
         static void Inspect(GameState gs) {
             Console.WriteLine("You approach the dead horse on the path, and kneel down beside it. The horse seems to have been shot recently, " +
                 "perhaps within the past twenty-four hours. You notice that the saddlebags are empty, you guess they must have been looted.");
