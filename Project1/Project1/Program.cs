@@ -258,8 +258,8 @@ namespace Project1 {
                 options.Add("Drink the rum");
             }
             if (gs.spottedGoblins) {
-                options.Add("Wait and stay out of sight of the goblins.");
-                options.Add("Try to sneak attack the goblins.");
+                options.Add("Wait and stay out of sight of the goblins");
+                options.Add("Try to sneak attack the goblins");
             }
             switch (options[PresentOptions(options, message)]) {
                 case "Head to Sharnwick":
@@ -303,6 +303,51 @@ namespace Project1 {
                 case "Drink the rum":
                     gs.current = "rum";
                     break;
+                case "Wait and stay out of sight of the goblins":
+                    gs.current = "sneak";
+                    break;
+                case "Try to sneak attack the goblins":
+                    gs.current = "attack";
+                    break;
+            }
+        }
+
+        // Accessed from "dead horse"
+        // The main character, waits for the goblins to leave and then follows them back to their hideout
+        static void Sneak(GameState gs) {
+        
+        }
+
+        // Accessed from "dead horse"
+        // The main character, attemps to sneak attack the goblins
+        static void Attack(GameState gs) {
+            if (HasItem(gs, "bow") && HasItem(gs, "arrow")) {
+                Console.WriteLine("From behind a tree, you fire an arrow at one of the goblins.");
+                Pause();
+                Console.WriteLine("The goblins noticed that one of them had been shot, but not noticed the direction in which the arrow " +
+                    "came from. Driven by fear, the two goblins run down a a concealed trail by the side of the road.");
+                Pause();
+                Console.WriteLine("Curious as to know what they were doing hiding by the side of the you follow them, making sure " +
+                    "that you keep your distance between them as to not be noticed.");
+                Pause();
+                gs.current = "hideout";
+            } else {
+                Console.WriteLine("You are unarmed.");
+                switch(PresentOptions(new List<string>() { "Yes", "No" }, "Are you sure you want to do this?")) {
+                    case 0:
+                        Console.WriteLine("Trying to be stealthy you sneak up behind the group of goblins. You ready your fists, and then " +
+                            "punch one of the goblins.");
+                        Pause();
+                        Console.WriteLine("The goblin that got punched falls to the ground. The other two goblins notice, and they both shoot " +
+                            "an arrow at you. One of them narrowly misses you, but the other one hits you in the chest");
+                        Pause();
+                        gs.current = "lose";
+                        break;
+                    case 1:
+                        Console.WriteLine("You decide its best not to engage with a fight against the goblins without weapons.");
+                        Pause();
+                        break;
+                }
             }
         }
 
