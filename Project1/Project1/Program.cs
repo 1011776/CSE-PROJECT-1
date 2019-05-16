@@ -545,15 +545,16 @@ namespace Project1 {
             string message = "What do you do next?";
             List<string> options = new List<string>();
             if (HasItem(gs, "lockpicking kit") && HasItem(gs, "rum")) {
-                Console.WriteLine("You realise that the goblins forgot to take away your lockpicking kit. And for some reason let you bring the bottle " +
-                    "of rum to the cell. You sigh in relief, not all hope is lost.");
+                Console.WriteLine("You realise that the goblins forgot to take away your lockpicking kit. And for some reason the goblins " +
+                    "let you bring the bottle of rum to the cell. You sigh in relief, not all hope is lost.");
                 options = new List<string>() { "Drink the 'rum'", "Offer the 'rum' to the guard", "Use the lockpicking kit on the cell" };
             } else if (HasItem(gs, "lockpicking kit")) {
                 Console.WriteLine("You realise that the goblins forgot to take away your lockpicking kit, you sigh in relief, not all hope is lost.");
                 Pause();
                 gs.current = "escape";
             } else if (HasItem(gs, "rum")) {
-                Console.WriteLine("You realise, for some reason let you bring the bottle of rum to the cell. Despite your hopeless situation, you still " +
+                Console.WriteLine("You realise, for some reason the goblins hadn't taken away your rum. " +
+                    "Despite your hopeless situation, you still " +
                     "have a few ideas about what you can do.");
                 options = new List<string>() { "Drink the 'rum'", "Offer the 'rum' to the guard" };
             }
