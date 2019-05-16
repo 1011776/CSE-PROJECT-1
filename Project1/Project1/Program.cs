@@ -19,6 +19,7 @@ namespace Project1 {
                     case "letter":      Letter(gs);     break;
                     case "armoury":     Armoury(gs);    break;
                     case "dead horse":  DeadHorse(gs);  break;
+                    case "Surrounds":   Surrounds(gs);  break;
                     case "ambushed":    Ambushed(gs);   break;
                     case "sharnwick":   Sharnwick(gs);  break;
                     case "hideout":     Hideout(gs);    break;
@@ -211,7 +212,7 @@ namespace Project1 {
             }
         }
 
-        // Accessed from "letter" and "inn"
+        // Accessed from "chadwick" and "surroundings"
         // The main character stumbles across a dead horse on the way to Sharnwick, they are attacked by goblins
         static void DeadHorse(GameState gs) {
             switch (gs.last) {
@@ -251,6 +252,7 @@ namespace Project1 {
                 case "Call out to see if anyone is around":
                     Console.WriteLine("You shout out \"Is anyone around\", there was no response. You do it again, but again, there was no " +
                         "response.");
+                    Pause();
                     gs.current = "ambushed";
                         break;
                 case "Head to Chadford":
@@ -270,11 +272,28 @@ namespace Project1 {
         }
 
         // Accessed from "dead horse"
+        // The main character, either with or without binoculars, inspects their surroundings
+        // If the main character has binoculars they spot the goblins otherwise the main character has a feeling of being watched
+        static void Surrounds(GameState gs) {
+            Console.WriteLine("You scan the trees and bushes surrounding you.");
+            Pause();
+            if (HasItem(gs, "binoculars")) {
+                Console.WriteLine("At first you don't see anything, but then you pull out your binoculars and have another look.");
+                Pause();
+                Console.WriteLine("Through your binoculars, you spot three goblins crouching behind a bush. They are armed with bows. " +
+                    "However they don't seem to have spotted you.");
+            } else {
+                Console.WriteLine("You don't see anything but you get the feeling that you are being watched.");
+            }
+            gs.current = "dead horse";
+        }
+
+        // Accessed from "dead horse"
         // Three goblins have gotten the jump on the main character and the player is captured
         static void Ambushed(GameState gs) {
             Console.WriteLine("Suddenly from out of nowhere an arrow narrowly misses your head and plants itself into a tree next to you. " +
                         "Looking at the arrow, it has the same black feathers that you saw sticking out of the horse. You turn to look at where the " +
-                        "arrow came from. Standing behind a shrub about 20 meters away, are three goblins with their bows and arrows pointed at you.");
+                        "arrow came from. Standing behind a shrub about twenty meters away, are three goblins with their bows and arrows pointed at you.");
             string message = "what do you do next?";
             List<string> options = new List<string> { "Try to run from the goblins", "Try to attack the goblins", "Put your hands up and stay still" };
             switch (PresentOptions(options, message)) {
@@ -290,10 +309,10 @@ namespace Project1 {
                     } else if (HasItem(gs, "bow") && HasItem(gs, "arrow")) {
                         Console.WriteLine("You draw your bow, knock an arrow into it, and fire a shot in the direction of the goblins. Due to it " +
                             "being the first time you had weilded a bow and being under pressure, you completely miss. The goblins do not hesitate " +
-                            "to react and fire an arrow at you which hits you in the chest.");
+                            "to react. One goblin fires an arrow at you which hits you in the chest.");
                     } else {
-                        Console.WriteLine("Despite being unarmed, you charge at the goblins. The goblins do not hesitate to react. From 10 meters away" +
-                            "The goblins land an easy shot on you. The arrow hits you square in the chest.");
+                        Console.WriteLine("Despite being unarmed, you charge at the goblins. The goblins do not hesitate to react." +
+                            "One goblin draws its bow and releases an arrow. It is an easy shot, and the arrow hits you square in the chest.");
                     }
                     gs.current = "lose";
                     break;
