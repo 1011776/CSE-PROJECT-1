@@ -474,7 +474,54 @@ namespace Project1 {
         // Accessed from "dead horse"
         // The main character has snuck into the goblin's hideout
         static void Hideout(GameState gs) {
-
+            if (HasBeenTo(gs, "hideout") == false) {
+                Console.WriteLine("You follow the goblins down the trail until you arrive at what seems to be their hideout. There are tents " +
+                    "campfires and there is a cave. From your hiding spot, although the cave is lit dimly by torch light, you can see Baern, " +
+                    "however he is trapped in a cell.");
+                Pause();
+                Console.WriteLine("As you sneak closer to the cell, you stop. You notice that there is a singular guard keeping watch over " +
+                    "the cell. In its right hand it is holding a club and in its left hand it is holding the keys to the cell.");
+            }
+            string message = "What do you do next?";
+            List<string> options = new List<string>() {
+                "Attack the guard",
+                "Try to sneak past the guard to free Baern"
+            };
+            switch(PresentOptions(options, message)) {
+                case 0:
+                    if (HasItem(gs, "bow") && HasItem(gs, "arrow")) {
+                        Console.WriteLine("You knock an arrow into your bow and aim it towards the goblin guard. " +
+                            "You release the arrow and it hits the guard.");
+                        Pause();
+                        Console.WriteLine("Using the keys that the guard dropped when you hit it with the arrow, you unlock the cell and free Baern");
+                    } else {
+                        if (HasItem(gs, "bow")) {
+                            Console.WriteLine("You have a bow, but you are out of arrows.");
+                        } else {
+                            Console.WriteLine("You are unarmed");
+                        }
+                        switch (PresentOptions(new List<string>() { "Yes", "No" }, "Are you sure you want to do this?")) {
+                            case 0:
+                                Console.WriteLine("You try to sneak up behind the goblin guard, but it notices you. The goblin guard, hits you " +
+                                    "with its club and knocks you out.");
+                                Pause();
+                                Console.WriteLine("You eventually wake up inside the cell, but your weapons have been taken off you.");
+                                gs.current = "captured";
+                                break;
+                            case 1:
+                                Console.WriteLine("You decide its best not to engage in a fight against the goblin guard without proper weapons.");
+                                Pause();
+                                break;
+                        }
+                    }
+                    break;
+                case 1:
+                    Console.WriteLine("The goblin guard is looking a little drowsy. You decide to take this opportunity to try take the keys " +
+                        "from it without it noticing. The goblin guard however, wakes up and hits you with its club, knocking you out.");
+                    Console.WriteLine("You eventually wake up inside the cell that the guard was taking after");
+                    gs.current = "captured";
+                    break;
+            }
         }
 
         // Accessed from "ambushed"
@@ -535,8 +582,9 @@ namespace Project1 {
             Console.WriteLine("Despite not being proficient in using the lockpicking kit you manage to break the lock. You give a thumbs up " +
                 "to Baern. As you push the cell door open, it makes a loud creeeek. ");
             Pause();
-            Console.WriteLine("The goblin guard who had almost fallen asleep on post, wakes up, turns around points its spear at you." +
-                "you are given no choice but to forfeit your lockpicking kit and return to your cell.");
+            Console.WriteLine("The goblin guard who had almost fallen asleep on post, wakes up, and hits you with its club, knocking you out.");
+            Pause();
+            Console.WriteLine("You wake up in your cell, but this time without your lockpicking kit.");
             gs.inventory.Remove("lockpicking kit");
             Pause();
             gs.current = "Captured";
@@ -666,6 +714,7 @@ namespace Project1 {
         }
 
         // Returns the GameSate for a default start from the beginning of the game
+        // This can be modified for testing purpouses as to start at a different point in the story
         static GameState NewGame() {
             GameState gs = new GameState();
             gs.current = "menu";
