@@ -660,7 +660,7 @@ namespace Project1 {
         // Promps the user to press any key to continue and reads a key
         // Use this to separate large blocks of text to prevent player from skim reading
         static void Pause() {
-            Console.WriteLine("Press any key to continue");
+            Console.WriteLine("[Press any key to continue]");
             Console.ReadKey();
             Console.WriteLine();
         }
