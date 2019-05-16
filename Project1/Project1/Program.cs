@@ -235,11 +235,11 @@ namespace Project1 {
             switch (options[PresentOptions(options, message)]) {
                 case "Head to Sharnwick":
                     switch (gs.last) {
-                        case "chadford":
+                        case "sharnwick":
                             Console.WriteLine("You decide that its better to head back to Sharnwick. You turn around and walk back the way " +
                                 "you came.");
                             break;
-                        case "sharnwick":
+                        case "chadford":
                             Console.WriteLine("You ignore the dead horse, stepping over it, and walk the rest of the way to Sharnwick.");
                             break;
                     }
@@ -247,15 +247,15 @@ namespace Project1 {
                     break;
                 case "Head to Chadford":
                     switch (gs.last) {
-                        case "sharnwick":
+                        case "chadford":
                             Console.WriteLine("You decide that its better to head back to Chadford. You turn around and walk back the way " +
                                 "you came.");
                             break;
-                        case "chadford":
+                        case "sharnwick":
                             Console.WriteLine("You ignore the dead horse, stepping over it, and walk the rest of the way to Chadford.");
                             break;
                     }
-                    gs.current = "sharnwick";
+                    gs.current = "chadford";
                     break;
             }
         }
@@ -269,6 +269,7 @@ namespace Project1 {
             Console.WriteLine("You decide, as there is nothing else to do, to turn back and head back to Chadford.");
             Console.Write("Press any key to continue");
             Console.ReadKey();
+            Console.WriteLine();
             gs.current = "dead horse";
         }
 
