@@ -19,7 +19,8 @@ namespace Project1 {
                     case "letter":      Letter(gs);     break;
                     case "armoury":     Armoury(gs);    break;
                     case "dead horse":  DeadHorse(gs);  break;
-                    case "Surrounds":   Surrounds(gs);  break;
+                    case "inspect":     Inspect(gs);    break;
+                    case "surrounds":   Surrounds(gs);  break;
                     case "ambushed":    Ambushed(gs);   break;
                     case "sharnwick":   Sharnwick(gs);  break;
                     case "hideout":     Hideout(gs);    break;
@@ -29,7 +30,7 @@ namespace Project1 {
                     case "lose":        Lose(gs);       break;
                     default:
                         Console.WriteLine("An unexpected error has occured.");
-                        Console.WriteLine("gs.current is an invalid value.");
+                        Console.WriteLine("gs.current " + gs.current + " is an invalid value.");
                         Console.WriteLine("The software will now quit.");
                         Pause();
                         gs.current = "quit";
@@ -218,7 +219,7 @@ namespace Project1 {
             switch (gs.last) {
                 case "chadford":
                     Console.WriteLine("You set off to Sharnwick. After about half a day of travel, as you come around a bend, " +
-                    "you spot a dead horse sprawled about twenty meters ahead of you, blocking the path. Several " +
+                    "you spot a dead horse sprawled across the path, about twenty meters ahead of you. Several " +
                     "black-feathered arrows stick out of it. The woods press close to the trail here, with a steep embankment " +
                     "and dense thickets on either side.");
                     break;
@@ -232,6 +233,7 @@ namespace Project1 {
             string message = "What do you do next?";
             List<string> options = new List<string>() {
                 "Head to Chadford",
+                "Have a closer look at the horse",
                 "Call out to see if anyone is around",
                 "Have a closer look at your surroundings",
                 "Head to Sharnwick"
@@ -255,7 +257,10 @@ namespace Project1 {
                         "response.");
                     Pause();
                     gs.current = "ambushed";
-                        break;
+                    break;
+                case "Have a closer look at the horse":
+                    gs.current = "inspect";
+                    break;
                 case "Head to Chadford":
                     switch (gs.last) {
                         case "chadford":
@@ -292,6 +297,16 @@ namespace Project1 {
             }
             Pause();
             gs.current = "dead horse";
+        }
+
+        static void Inspect(GameState gs) {
+            Console.WriteLine("You approach the dead horse on the path, and kneel down beside it. The horse seems to have been shot recently, " +
+                "perhaps within the past twenty-four hours. You notice that the saddlebags are empty, you guess they must have been looted.");
+            Pause();
+            Console.WriteLine("As you step away from the horse, a small metal compass hald burried in the dirt of the track. " +
+                "You pick it up, turning it around you notice a name engraved in the back: \"Baern\".");
+            Pause();
+            gs.current = "ambushed";
         }
 
         // Accessed from "dead horse"
