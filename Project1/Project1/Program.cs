@@ -25,6 +25,7 @@ namespace Project1 {
                     case "sharnwick":   Sharnwick(gs);  break;
                     case "hideout":     Hideout(gs);    break;
                     case "escape":      Escape(gs);     break;
+                    case "rum guard":   RumGuard(gs);   break;
                     case "rum":         Rum(gs);        break;
                     case "captured":    Captured(gs);   break;
                     case "win":         Win(gs);        break;
@@ -460,7 +461,7 @@ namespace Project1 {
                         gs.current = "rum";
                         break;
                     case 1:
-                        gs.current = "rumGuard";
+                        gs.current = "rum guard";
                         break;
                     case 2:
                         gs.current = "escape";
