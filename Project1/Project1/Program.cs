@@ -81,6 +81,7 @@ namespace Project1 {
 
         // Accessed from "win", "lose" and "menu"
         // Describes main character being kicked out of an inn and recieving a letter
+        // Regardless of player decisions, function accesses "charnford"
         static void Inn(GameState gs) {
             if (HasBeenTo(gs, "inn")) {
                 Console.WriteLine("You re-enter the inn. The innkeeper is looking at you confused. \"I thought you were broke?\" " +
@@ -111,6 +112,7 @@ namespace Project1 {
 
         // Accessed from "inn"
         // Describes the main character opening the letter thay recieved from the inn
+        // Regardless of player decisions, function accesses "charnford"
         static void Letter(GameState gs) {
             const string NAME = "Bilbo";
             Console.WriteLine("Opening the letter you read:\n Dear " + NAME + ",\n I'm writing this to let you know that " +
@@ -382,6 +384,7 @@ namespace Project1 {
 
         // Accessed from "dead horse"
         // Baern is nowhere to be found in sharnwick and must back to search for him
+        // Regardless of player decisions, function accesses "dead horse"
         static void Sharnwick(GameState gs) {
             Console.WriteLine("After another few hours in the distance you spot the small town of Sharnwick. Theres a inn, shops and " +
                 "a chapel. It isn't as big of a town as Chadford, so it doesn't take you long to visit all of the shops and houses. " +
@@ -479,7 +482,7 @@ namespace Project1 {
             Console.WriteLine("Despite not being proficient in using the lockpicking kit you manage to break the lock. You give a thumbs up " +
                 "to Baern. As you push the cell door open, it makes a loud creeeek. ");
             Pause();
-            Console.WriteLine("The goblin guard who had almost fallen asleep on post, wakes up, turns around points his spear at you." +
+            Console.WriteLine("The goblin guard who had almost fallen asleep on post, wakes up, turns around points its spear at you." +
                 "you are given no choice but to forfeit your lockpicking kit and return to your cell.");
             gs.inventory.Remove("lockpicking kit");
             Pause();
@@ -487,10 +490,20 @@ namespace Project1 {
         }
 
         // Accessed from "Captured"
-        // The main character offers the rum to the goblin guard, causing the goblin guard to pass out and drop his keys
+        // The main character offers the rum to the goblin guard, causing the goblin guard to pass out and drop its keys
         // Regardless of player decisions, function accesses "win"
         static void RumGuard(GameState gs) {
-
+            Console.WriteLine("You offer the smith's rum to the goblin guard. The goblin guard doesn't say anything, but picks up " +
+                "the bottle and pops the cork. The guard doesn't seem to question why the rum is a dark thick liquid, or notice the " +
+                "noxious smelling odour coming from it and takes a sip. ");
+            Pause();
+            Console.WriteLine("The goblin guard stands still for a moment, before he collapses to the ground. The keys are dropped by the " +
+                "edge of the cell.");
+            Pause();
+            Console.WriteLine("Picking up the keys, you unlock the cell door. The guard, being passed out, doesn't do anything to stop the two " +
+                "of you, so you and Baern are able to escape the goblins. ");
+            Pause();
+            gs.current = "win";
         }
 
         // Accessed when the player wins the game
