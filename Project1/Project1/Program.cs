@@ -12,19 +12,20 @@ namespace Project1 {
             while (gs.current != "quit") {
                 // gs.current contains a string thar corresponds to a function
                 switch (gs.current) {
-                    case "menu": Menu(gs); break;
-                    case "about": About(gs); break;
-                    case "inn": Inn(gs); break;
-                    case "chadford": Chadford(gs); break;
-                    case "letter": Letter(gs); break;
-                    case "armoury": Armoury(gs); break;
-                    case "dead horse": DeadHorse(gs); break;
-                    case "sharnwick": Sharnwick(gs); break;
-                    case "hideout": Hideout(gs); break;
-                    case "rum": Rum(gs); break;
-                    case "captured": Captured(gs); break;
-                    case "win": Win(gs); break;
-                    case "lose": Lose(gs); break;
+                    case "menu":        Menu(gs);       break;
+                    case "about":       About(gs);      break;
+                    case "inn":         Inn(gs);        break;
+                    case "chadford":    Chadford(gs);   break;
+                    case "letter":      Letter(gs);     break;
+                    case "armoury":     Armoury(gs);    break;
+                    case "dead horse":  DeadHorse(gs);  break;
+                    case "ambushed":    Ambushed(gs);   break;
+                    case "sharnwick":   Sharnwick(gs);  break;
+                    case "hideout":     Hideout(gs);    break;
+                    case "rum":         Rum(gs);        break;
+                    case "captured":    Captured(gs);   break;
+                    case "win":         Win(gs);        break;
+                    case "lose":        Lose(gs);       break;
                     default:
                         Console.WriteLine("An unexpected error has occured.");
                         Console.WriteLine("gs.current is an invalid value.");
