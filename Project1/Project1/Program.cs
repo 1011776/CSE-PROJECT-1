@@ -19,6 +19,8 @@ namespace Project1 {
                     case "letter":      Letter(gs);     break;
                     case "armoury":     Armoury(gs);    break;
                     case "dead horse":  DeadHorse(gs);  break;
+                    case "sneak":       Sneak(gs);      break;
+                    case "attack":      Attack(gs);     break;
                     case "inspect":     Inspect(gs);    break;
                     case "surrounds":   Surrounds(gs);  break;
                     case "ambushed":    Ambushed(gs);   break;
@@ -323,6 +325,7 @@ namespace Project1 {
             Pause();
             Console.WriteLine("You choose to keep them in sight, tailing them so that they don't notice you.");
             Pause();
+            gs.current = "hideout";
         }
 
         // Accessed from "dead horse"
