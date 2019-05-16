@@ -433,10 +433,34 @@ namespace Project1 {
             Console.WriteLine("In the dim light of the cell, you recognise a familiar face, Baern. Baern tells you \"I was afraid this might" +
                 "happen, now you've been dragged into this mess\". ");
             Pause();
+            string message = "What do you do next?";
+            List<string> options = new List<string>();
             if (HasItem(gs, "lockpicking kit") && HasItem(gs, "rum")) {
-                List<string> options = new List<string>() { "Drink the 'rum'", "Offer the 'rum' to the guard", "Use the lockpicking kit on the cell" };
-
-            } else {
+                Console.WriteLine("You realise that the goblins forgot to take away your lockpicking kit. And for some reason let you bring the bottle " +
+                    "of rum to the cell. You sigh in relief, not all hope is lost.");
+                options = new List<string>() { "Drink the 'rum'", "Offer the 'rum' to the guard", "Use the lockpicking kit on the cell" };
+            } else if (HasItem(gs, "lockpicking kit")) {
+                Console.WriteLine("You realise that the goblins forgot to take away your lockpicking kit, you sigh in relief, not all hope is lost.");
+                Pause();
+                gs.current = "escape";
+            } else if (HasItem(gs, "rum")) {
+                Console.WriteLine("You realise, for some reason let you bring the bottle of rum to the cell. Despite your hopeless situation, you still " +
+                    "have a few ideas about what you can do.");
+                options = new List<string>() { "Drink the 'rum'", "Offer the 'rum' to the guard" };
+            }
+            if (options.Count > 0) {
+                switch(PresentOptions(options, message)) {
+                    case 0:
+                        gs.current = "rum";
+                        break;
+                    case 1:
+                        gs.current = "rumGuard";
+                        break;
+                    case 2:
+                        gs.current = "escape";
+                        break;
+                }
+            } else if (gs.current != "escape") {
                 Console.WriteLine("With no weapons or items to help you, you don't know what to do. You have run out of options.");
                 gs.current = "lose";
             }
