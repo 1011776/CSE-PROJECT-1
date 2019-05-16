@@ -410,20 +410,17 @@ namespace Project1 {
         // Lets player know that they have won the game, gives the player option to play again or quit
         static void Win(GameState gs) {
             Console.WriteLine("You have won the game");
-            string input;
-
-            do {
-                Console.WriteLine("What do you do next?");
-                Console.WriteLine("A - Try again");
-                Console.WriteLine("B - Quit");
-                input = Console.ReadLine().ToLower();
-            } while (input.Count() == 1 && input[0] >= 'a' && input[0] <= 'b');
-            switch (input) {
-                case "a":
-                    gs.current = "inn";
+            string message = "What do you do next?";
+            List<string> options = new List<string>() {
+                "Return to menu",
+                "Quit"
+            };
+            switch (PresentOptions(options, message)) {
+                case 0:
+                    gs.current = "menu";
                     gs = NewGame();
                     break;
-                case "b":
+                case 1:
                     gs.current = "quit";
                     break;
             }
@@ -435,12 +432,12 @@ namespace Project1 {
             Console.WriteLine("You have lost the game");
             string message = "What do you do next?";
             List<string> options = new List<string>() {
-                "Try again",
+                "Return to menu",
                 "Quit"
             };
             switch (PresentOptions(options, message)) {
                 case 0:
-                    gs.current = "inn";
+                    gs.current = "menu";
                     gs = NewGame();
                     break;
                 case 1:
