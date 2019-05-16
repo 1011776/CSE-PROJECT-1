@@ -30,8 +30,7 @@ namespace Project1 {
                         Console.WriteLine("An unexpected error has occured.");
                         Console.WriteLine("gs.current is an invalid value.");
                         Console.WriteLine("The software will now quit.");
-                        Console.WriteLine("Press any key to continue.");
-                        Console.ReadKey();
+                        Pause();
                         gs.current = "quit";
                         break;
                 }
@@ -72,9 +71,7 @@ namespace Project1 {
             Console.WriteLine("The Smith's Stash, written by Alistair Parkinson, is a text adventure as a part of a " +
                 "school project. This game is open-source, so feel free to use my code as per the MIT Licence. " +
                 "Currently this project is still in development so expect regular updates. I hope you enjoy my game.");
-            Console.WriteLine("Press any key to return to menu.");
-            Console.ReadKey();
-            Console.WriteLine();
+            Pause();
             gs.current = "menu";
         }
 
@@ -99,9 +96,7 @@ namespace Project1 {
                     "take this\", the innkeeper hands you a letter.");
             }
             gs.inventory.Add("chadford");
-            Console.WriteLine("Press any key to continue.");
-            Console.ReadKey();
-            Console.WriteLine();
+            Pause();
             gs.current = "chadford";
         }
 
@@ -114,9 +109,7 @@ namespace Project1 {
                 "If you're looking for work I'd reccomend you come down as I'll need someone to help me with the project.");
             Console.WriteLine("P.S. I'm sure you already know, but the trails to Sharnwick are notoriuos for being " +
                 "dangerous, so I suggest you get something from the armoury");
-            Console.WriteLine("Press any key to continue");
-            Console.ReadKey();
-            Console.WriteLine();
+            Pause();
             gs.current = "chadford";
         }
 
@@ -299,14 +292,20 @@ namespace Project1 {
                             "The goblins land an easy shot on you. The arrow hits you square in the chest.");
                     }
                     gs.current = "lose";
-                    Console.WriteLine("Press any key to continue");
-                    Console.ReadKey();
                     break;
                 case 2:
-                    /////////////WIP
+                    if (HasItem(gs, "sword")) {
+                        Console.WriteLine("You lay your sword on the floor and stand still");
+                    } else if (HasItem(gs, "bow")) {
+                        Console.WriteLine("You lay your bow on the floor and stand still.");
+                    } else {
+                        Console.WriteLine("You put your hands up, and stand still.");
+                    }
+                    Console.WriteLine("With their bows still pointing at you they slowly approach you, before they tie your hands behind your " +
+                        "back.");
                     break;
             }
-            Console.ReadKey();
+            Pause();
             gs.current = "quit";
         }
 
@@ -317,9 +316,7 @@ namespace Project1 {
                 "a chapel. It isn't as big of a town as Chadford, so it doesn't take you long to visit all of the shops and houses. " +
                 "After looking around the town, you realise that you can't find Baern. Perhaps he's somewhere back in Chadford.");
             Console.WriteLine("You decide, as there is nothing else to do, to turn back and head back to Chadford.");
-            Console.Write("Press any key to continue");
-            Console.ReadKey();
-            Console.WriteLine();
+            Pause();
             gs.current = "dead horse";
         }
 
@@ -329,6 +326,7 @@ namespace Project1 {
             Console.WriteLine("The rum is an dark thick opaque looking liquid. You pop the cork off, and a noxious " +
                 "smelling odour wafts from the opening of the bottle, you try your best not to gag. By now. from the " +
                 "look and the smell, you are questioning yourself if it really is rum or the blacksmith is trying to poison you.");
+            Pause();
             Console.WriteLine("You are having second thoughts about drinking the smith's 'rum'.");
             switch (PresentOptions(new List<string>() { "Yes", "No " }, "Are you really sure you want to drink the 'rum'.")) {
                 case 0:
@@ -341,9 +339,7 @@ namespace Project1 {
                     gs.current = gs.last;
                     break;
             }
-               
-            Console.WriteLine("Press any key to continue.");
-            Console.ReadKey();
+            Pause();
             Console.WriteLine();
         }
 
@@ -356,6 +352,9 @@ namespace Project1 {
         // Accessed from "desd horse"
         // The main character is captured by the goblin ambushers
         static void Captured(GameState gs) {
+            Console.WriteLine("The goblins take you down a concealed path at the side of the road. The trail is a narrow path that winds through " +
+                "the thick forrests that surround the road. Eventually you arrive at a cave, which is dimly lit by torches mounted to the walls. " +
+                "They then take you to a prison cell in which they lock you inside.");
 
         }
 
@@ -412,6 +411,14 @@ namespace Project1 {
             return false;
         }
 
+        // Promps the user to press any key to continue and reads a key
+        // Use this to separate large blocks of text to prevent player from skim reading
+        static void Pause() {
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            Console.WriteLine();
+        }
+
         // Returns whether the gs.beenTo contains section using linear search algorithm
         static bool HasBeenTo(GameState gs, string section) {
             for (int i = 0; i < gs.beenTo.Count(); i++) {
@@ -443,6 +450,7 @@ namespace Project1 {
             } else {
                 Console.WriteLine("You cannot afford that");
             }
+            Pause();
         }
 
         // Prints out options and prompts user to select one, message is printed with options presented
