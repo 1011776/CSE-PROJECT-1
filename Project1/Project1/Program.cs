@@ -283,22 +283,25 @@ namespace Project1 {
         // Accessed from multiple functions
         // If the player chooses to drink the rum they die from poisoning
         static void Rum(GameState gs) {
-            Console.WriteLine("The rum is an dark thick opaque looking liquid... if you could even call it a liquid. " +
-                "You pop the cork off, and a noxious smelling odour wafts from the opening of the bottle.");
+            Console.WriteLine("The rum is an dark thick opaque looking liquid. You pop the cork off, and a noxious " +
+                "smelling odour wafts from the opening of the bottle, you try your best not to gag. By now. from the " +
+                "look and the smell, you are questioning yourself if it really is rum or the blacksmith is trying to poison you.");
             Console.WriteLine("You are having second thoughts about drinking the smith's 'rum'.");
-            switch (PresentOptions(new List<string>() { "Yes", "No " }, "Are you sure you want to drink the 'rum'.")) {
+            switch (PresentOptions(new List<string>() { "Yes", "No " }, "Are you really sure you want to drink the 'rum'.")) {
                 case 0:
-                    Console.WriteLine("Reluctantly, you take a sip of the smith's 'rum'. You start to feel dizzy, then tingling " +
-                        "coming from all over your body and your vision stating to blur. Before you know it you have passed out.");
+                    Console.WriteLine("Reluctantly, you take a sip of the smith's 'rum'. You start to feel dizzy and then a tingling " +
+                        "sensation coming from all over your body. Your vision stating to blur, and before you know it you have passed out.");
+                    gs.current = "Lose";
                     break;
                 case 1:
-                    Console.WriteLine("You put the cork back on the bottle.");
+                    Console.WriteLine("You decide to put the cork back on the bottle.");
+                    gs.current = gs.last;
                     break;
             }
                
             Console.WriteLine("Press any key to continue.");
             Console.ReadKey();
-            gs.current = "lose";
+            Console.WriteLine();
         }
 
         // Accessed from "dead horse"
