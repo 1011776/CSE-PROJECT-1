@@ -24,6 +24,7 @@ namespace Project1 {
                     case "ambushed":    Ambushed(gs);   break;
                     case "sharnwick":   Sharnwick(gs);  break;
                     case "hideout":     Hideout(gs);    break;
+                    case "escape":      Escape(gs);     break;
                     case "rum":         Rum(gs);        break;
                     case "captured":    Captured(gs);   break;
                     case "win":         Win(gs);        break;
