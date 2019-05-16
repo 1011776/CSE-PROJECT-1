@@ -267,7 +267,9 @@ namespace Project1 {
                 "a chapel. It isn't as big of a town as Chadford, so it doesn't take you long to visit all of the shops and houses. " +
                 "After looking around the town, you realise that you can't find Baern. Perhaps he's somewhere back in Chadford.");
             Console.WriteLine("You decide, as there is nothing else to do, to turn back and head back to Chadford.");
+            Console.Write("Press any key to continue");
             Console.ReadKey();
+            gs.current = "dead horse";
         }
 
         // Accessed from multiple functions
