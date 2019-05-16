@@ -12,18 +12,18 @@ namespace Project1 {
             while (gs.current != "quit") {
                 // gs.current contains a string thar corresponds to a function
                 switch (gs.current) {
-                    case "menu":        Menu(gs);       break;
-                    case "about":       About(gs);      break;
-                    case "inn":         Inn(gs);        break;
-                    case "chadford":    Chadford(gs);   break;
-                    case "letter":      Letter(gs);     break;
-                    case "armoury":     Armoury(gs);    break;
-                    case "dead horse":  DeadHorse(gs);  break;
-                    case "sharnwick":   Sharnwick(gs);  break;
-                    case "hideout":     Hideout(gs);    break;
-                    case "captured":    Captured(gs);   break;
-                    case "win":         Win(gs);        break;
-                    case "lose":        Lose(gs);       break;
+                    case "menu": Menu(gs); break;
+                    case "about": About(gs); break;
+                    case "inn": Inn(gs); break;
+                    case "chadford": Chadford(gs); break;
+                    case "letter": Letter(gs); break;
+                    case "armoury": Armoury(gs); break;
+                    case "dead horse": DeadHorse(gs); break;
+                    case "sharnwick": Sharnwick(gs); break;
+                    case "hideout": Hideout(gs); break;
+                    case "captured": Captured(gs); break;
+                    case "win": Win(gs); break;
+                    case "lose": Lose(gs); break;
                     default:
                         Console.WriteLine("An unexpected error has occured.");
                         Console.WriteLine("gs.current is an invalid value.");
@@ -213,23 +213,51 @@ namespace Project1 {
         // Accessed from "letter" and "inn"
         // The main character stumbles across a dead horse on the way to Sharnwick, they are attacked by goblins
         static void DeadHorse(GameState gs) {
-            Console.WriteLine("You set off to sharnwick. After about half a day of travel, as you come around a bend, " +
-                "you spot a dead horse sprawled about twenty meters ahead of you, blocking the path. Several " +
-                "black-feathered arrows stick out of it. The woods press close to the trail here, with a steep embankment " +
-                "and dense thickets on either side.");
+            switch (gs.last) {
+                case "chadford":
+                    Console.WriteLine("You set off to Sharnwick. After about half a day of travel, as you come around a bend, " +
+                    "you spot a dead horse sprawled about twenty meters ahead of you, blocking the path. Several " +
+                    "black-feathered arrows stick out of it. The woods press close to the trail here, with a steep embankment " +
+                    "and dense thickets on either side.");
+                    break;
+                case "sharnwick":
+                    Console.WriteLine("On your way back to Chadford, you stumble across the same dead horse you saw on the way " +
+                        "there. It is still there, sprawled accross the ground and blocking the path, with several black-feathered " +
+                        "arrows sticking out of it. The woods press close to the trail here, with a steep embankment " + 
+                        "and dense thickets on either side.");
+                    break;
+            }
             string message = "What do you do next?";
             List<string> options = new List<string>() {
-                "Ignore the dead horse"
+                "Head to Chadford",
+                "Head to Sharnwick"
             };
             switch (options[PresentOptions(options, message)]) {
-                case "Ignore the dead horse":
-                    Console.WriteLine("You ignore the dead horse, stepping over it, and walk the rest of the way to Sharnwick.");
+                case "Head to Sharnwick":
+                    switch (gs.last) {
+                        case "chadford":
+                            Console.WriteLine("You decide that its better to head back to Sharnwick. You turn around and walk back the way " +
+                                "you came.");
+                            break;
+                        case "sharnwick":
+                            Console.WriteLine("You ignore the dead horse, stepping over it, and walk the rest of the way to Sharnwick.");
+                            break;
+                    }
                     gs.current = "sharnwick";
                     break;
-
+                case "Head to Chadford":
+                    switch (gs.last) {
+                        case "sharnwick":
+                            Console.WriteLine("You decide that its better to head back to Chadford. You turn around and walk back the way " +
+                                "you came.");
+                            break;
+                        case "chadford":
+                            Console.WriteLine("You ignore the dead horse, stepping over it, and walk the rest of the way to Chadford.");
+                            break;
+                    }
+                    gs.current = "sharnwick";
+                    break;
             }
-
-            Console.ReadKey();
         }
 
         // Accessed from "dead horse"
@@ -238,7 +266,7 @@ namespace Project1 {
             Console.WriteLine("After another few hours in the distance you spot the small town of Sharnwick. Theres a inn, shops and " +
                 "a chapel. It isn't as big of a town as Chadford, so it doesn't take you long to visit all of the shops and houses. " +
                 "After looking around the town, you realise that you can't find Baern. Perhaps he's somewhere back in Chadford.");
-            
+            Console.WriteLine("You decide, as there is nothing else to do, to turn back and head back to Chadford.");
             Console.ReadKey();
         }
 
@@ -258,7 +286,7 @@ namespace Project1 {
         // Accessed from "dead horse"
         // The main character has snuck into the goblin's hideout
         static void Hideout(GameState gs) {
-            
+
         }
 
         // Accessed from "desd horse"
@@ -389,7 +417,6 @@ namespace Project1 {
             // Only written to by UpdateBeenTo
             // Contains list of all values that current has been except for what it currently is
             public List<string> beenTo;
-            // Only accessed by UpdateBeenTo
             // Contains last value that current was
             public string last;
         }
