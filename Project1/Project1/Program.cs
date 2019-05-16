@@ -535,8 +535,8 @@ namespace Project1 {
                     "the thick forrests that surround the road.");
                 Pause();
                 Console.WriteLine("Eventually you arrive at a cave, which is dimly lit by torches mounted to the walls. " +
-                    "They then take you to a prison cell in which they lock you inside. A goblin guard stands by the cell with the keys attatched " +
-                    "to his belt.");
+                    "They then take you to a prison cell in which they lock you inside. A goblin guard stands outside the cell, with a club in its " +
+                    "right hand and the keys to the cell in its left.");
                 Pause();
                 Console.WriteLine("In the dim light of the cell, you recognise a familiar face, Baern. Baern tells you \"I was afraid this might" +
                     "happen, now you've been dragged into this mess\". ");
@@ -579,7 +579,7 @@ namespace Project1 {
         // The main character tries to break free from the cell using a lockpik but fails
         // Regardless of player decisions, function accesses "lose"
         static void Escape(GameState gs) {
-            Console.WriteLine("You show the lockpicking kit to Baern, and his eyes light up. You quietly stand up to the cell lock, and try" +
+            Console.WriteLine("You show the lockpicking kit to Baern, and his eyes light up. You quietly stand up to the cell lock, and try " +
                 "your best to lockpick it.");
             Pause();
             Console.WriteLine("Despite not being proficient in using the lockpicking kit you manage to break the lock. You give a thumbs up " +
@@ -590,10 +590,10 @@ namespace Project1 {
             Console.WriteLine("You wake up in your cell, but this time without your lockpicking kit.");
             gs.inventory.Remove("lockpicking kit");
             Pause();
-            gs.current = "Captured";
+            gs.current = "captured";
         }
 
-        // Accessed from "Captured"
+        // Accessed from "captured"
         // The main character offers the rum to the goblin guard, causing the goblin guard to pass out and drop its keys
         // Regardless of player decisions, function accesses "win"
         static void RumGuard(GameState gs) {
