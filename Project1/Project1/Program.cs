@@ -59,6 +59,7 @@ namespace Project1 {
             int input = PresentOptions(options, message);
             switch (input) {
                 case 0:
+                    gs = NewGame();
                     gs.current = "inn";
                     break;
                 case 1:
@@ -623,7 +624,6 @@ namespace Project1 {
             switch (PresentOptions(options, message)) {
                 case 0:
                     gs.current = "menu";
-                    gs = NewGame();
                     break;
                 case 1:
                     gs.current = "quit";
@@ -643,7 +643,6 @@ namespace Project1 {
             switch (PresentOptions(options, message)) {
                 case 0:
                     gs.current = "menu";
-                    gs = NewGame();
                     break;
                 case 1:
                     gs.current = "quit";
