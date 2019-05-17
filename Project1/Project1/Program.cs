@@ -31,6 +31,9 @@ namespace Project1 {
                     case "captured":    Captured(gs);   break;
                     case "win":         Win(gs);        break;
                     case "lose":        Lose(gs);       break;
+                    case "new game":
+                        gs = NewGame();
+                        break;
                     default:
                         Console.WriteLine("An unexpected error has occurred.");
                         Console.WriteLine("gs.current =" + gs.current + " and is an invalid value.");
@@ -59,7 +62,6 @@ namespace Project1 {
             int input = PresentOptions(options, message);
             switch (input) {
                 case 0:
-                    gs = NewGame();
                     gs.current = "inn";
                     break;
                 case 1:
@@ -623,7 +625,7 @@ namespace Project1 {
             };
             switch (PresentOptions(options, message)) {
                 case 0:
-                    gs.current = "menu";
+                    gs.current = "new game";
                     break;
                 case 1:
                     gs.current = "quit";
@@ -642,7 +644,7 @@ namespace Project1 {
             };
             switch (PresentOptions(options, message)) {
                 case 0:
-                    gs.current = "menu";
+                    gs.current = "new game";
                     break;
                 case 1:
                     gs.current = "quit";
