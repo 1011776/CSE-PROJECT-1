@@ -32,7 +32,7 @@ namespace Project1 {
                     case "win":         Win(gs);        break;
                     case "lose":        Lose(gs);       break;
                     default:
-                        Console.WriteLine("An unexpected error has occured.");
+                        Console.WriteLine("An unexpected error has occurred.");
                         Console.WriteLine("gs.current =" + gs.current + " and is an invalid value.");
                         Console.WriteLine("The software will now quit.");
                         Pause();
@@ -113,7 +113,7 @@ namespace Project1 {
         }
 
         // Accessed from "inn"
-        // Describes the main character opening the letter thay recieved from the inn
+        // Describes the main character opening the letter thay received from the inn
         // Regardless of player decisions, function accesses "charnford"
         static void Letter(GameState gs) {
             const string NAME = "Bilbo";
@@ -131,7 +131,7 @@ namespace Project1 {
         // Accessed from "inn" and "letter"
         static void Chadford(GameState gs) {
             Console.WriteLine("You are standing outside the inn, at one of the busy streets of the city of Chadford. " +
-                "You are currently holding the letter that you had recieved from the innkeeper. Across the street is " +
+                "You are currently holding the letter that you had received from the innkeeper. Across the street is " +
                 "an armoury, and further down the street is a road that leads to the settlement of Sharnwick.");
             if (HasBeenTo(gs, "letter") && !HasBeenTo(gs, "armoury")) {
                 Pause();
