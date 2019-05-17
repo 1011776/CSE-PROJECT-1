@@ -462,7 +462,7 @@ namespace Project1 {
                 case 0:
                     Console.WriteLine("Reluctantly, you take a sip of the smith's 'rum'. You start to feel dizzy and then a tingling " +
                         "sensation coming from all over your body. Your vision stating to blur, and before you know it you have passed out.");
-                    gs.current = "Lose";
+                    gs.current = "lose";
                     break;
                 case 1:
                     Console.WriteLine("You decide to put the cork back on the bottle.");
