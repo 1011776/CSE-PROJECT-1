@@ -5,7 +5,7 @@ This repository has been created for the purpose of backing up a school computer
 <br/><br/>
 I am not planning on accepting any pull requests until this assignment is due on 17/05/2019. However, feel free to use my code in your own software as per the MIT License of course.
 <br/><br/>
-I have used tags to label the working versions of the code, these will be the least buggy. 
+I have used tags to label the working versions of the code. Any release before 1.0 will likely contain bugs and be incomplete. Any release that is or is after 1.0 might still contain bugs, but will be able to support a complete playthrough. For the most enhanced and least buggy version, just download or clone the latest release. 
 <br/><br/>
 I highly reccomend, if you care for the development of the game, that you test my code and provide your feedback via this Google Form https://forms.gle/kWnM8tDgUyhxNsPy6. 
 
