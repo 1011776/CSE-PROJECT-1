@@ -13,7 +13,7 @@ Finally, I have chosen to make my project open source, so I encourage you to use
 The game is based in a fantasy world similar to that of books and movies such as Game of Thrones and Lord of the Rings. You play as the character Bilbo, who has recently been kicked out of the inn he has been staying at. He is nearly broke, but then recieves a letter from a friend Baern telling him that he needs help with a job in the town of Sharnwick.
 
 # How to install
-<br/><br/>Step One<br/>
+Step One<br/>
 Navigate to the releases of the repository and choose the latest version for the least bugs and most features. 
 <br/><br/>Step Two<br/>
 Download the release in your preferred compressed format and extract the files.
